@@ -90,10 +90,16 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size:15px;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px 1px gray;
 }
 
-.slash, .multiply, .divide, .addition, .equal, .percentage {
+
+
+.multiply, .divide, .addition, .subtract, .equal, .percentage {
     width: 61px;
+    cursor: pointer;
+    box-shadow: none;
 }
 
 .num0 {
@@ -127,6 +133,8 @@ body {
     background-color: #AEAEAE;
     color: black;
     font-weight: 600;
+   
+    box-shadow: 1px 1px 2px 1px ;
  }
 
  .line {
