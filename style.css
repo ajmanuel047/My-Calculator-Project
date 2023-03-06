@@ -59,8 +59,9 @@ margin-top: 3px;
 .buttons_container {
     display: flex;
     /* background-color: green; */
-    margin-top: 70px;
+    margin-top: 40px;
 }
+
 
 body {
     display: flex;
@@ -75,7 +76,7 @@ body {
     display: flex;
     justify-content: flex-end;
     position: relative;
-    top: 80px;
+    top: 50px;
     right: 4px;
     
 }
@@ -94,7 +95,10 @@ body {
     box-shadow: 1px 1px 2px 1px gray;
 }
 
-
+.btn:active {
+  
+    transform: scale(0.97);
+  }
 
 .multiply, .divide, .addition, .subtract, .equal, .percentage {
     width: 61px;
