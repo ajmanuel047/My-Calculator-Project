@@ -10,7 +10,7 @@ const eight = document.querySelector('.num8');
 const nine = document.querySelector('.num9');
 const divide = document.querySelector('.divide');
 const subtract = document.querySelector('.subtract');
-const add = document.querySelector('.addition');
+const addButton = document.querySelector('.addition');
 const multiply = document.querySelector('.multiply');
 const equal = document.querySelector('.equal');
 const plusMinus = document.querySelector('.plus_minus');
@@ -33,6 +33,10 @@ const time = document.querySelector('.time')
  let hoursMin = currDate.getHours() + ':' + currDate.getMinutes();
  time.textContent = hoursMin
 
+ let clickCount = 0
+// let num1 = undefined;
+// let num2 = undefined;
+let arr = [];
 displayScreen.textContent = 0;
 let displayScreenValues = displayScreen;
 let num1 = 0;
@@ -58,16 +62,24 @@ let division = (num1, num2) => {
     return num2 / num1;
 };
 
-let operate = (operator, num1, num2) => {
-    console.log(num1)
-  
-    if(operator() == '+'){
-        console.log('+')
-        console.log(typeof Number(num1))
-       return Number(num1) +Number(num2)
-    }
+
+    function add(arr){
+        let sum = 0;
         
-};
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] == '+')continue;
+            if(typeof arr[i] == 'string' && arr[i] !== '+'){
+                console.log(typeof arr[i])
+                let conversion = parseInt(arr[i])
+                console.log(typeof conversion)
+                sum += conversion
+            }
+            sum += arr[i]
+        } 
+        return sum
+        }
+     
+
 
 
 zero.addEventListener('click', function(){
@@ -79,38 +91,87 @@ zero.addEventListener('click', function(){
 });
 
 one.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
-        displayScreen.textContent = 1;
-    } else {
-        displayScreen.textContent += 1;
+    clickCount++
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || typeof arr[0] === 'string'){
+         displayScreen.textContent = 1;
+         arr.push(1)
     }
+    else if(clickCount === 2){
+         displayScreen.textContent += 1
+       
+       let result = Number(arr[arr.length - 1] + '1');
+         arr.pop()
+         arr.push(result)
+         clickCount = 0;
+      }
+    else if(displayScreen.textContent.length > 2){
+         displayScreen.textContent += 1
+         let result = Number(arr[arr.length - 1] + '1');
+         arr.pop()
+         arr.push(result)
+         console.log('yessss')
+         clickCount = 0;
+       
+    }
+    else{
+         displayScreen.textContent += 1
+         let result = Number(arr[arr.length - 1] + '1');
+         arr.pop()
+         arr.push(result)
+         
+         
+        console.log('yessss')
+    }
+    console.log(`length : ${displayScreen.textContent.length}`)
     
-    if(num1 == 0){
-        num1 = '1'
-    } else {
-        num1 += '1'
-    }
-   
-     console.log(num1)
-     
-});
+    console.log(displayScreen.textContent)
+     num1 = Number(displayScreen.textContent)
+     console.log(arr)
+    //  if(arr[0] === NaN){
+    //     display.textContent = 1
+    //  }
+    })
+    document.addEventListener('click', function(event) {
+        if (event.target.tagName.toLowerCase() !== 'button') {
+            clickCount = 0;
+        }
+      });
+    
 
-two.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
-        displayScreen.textContent = 2;
-    } else {
-            displayScreen.textContent += 2;
-    }; 
-    if(num2 == 0){
-        num2 = '2'
-    } else {
-        num2 += '2'
-    }
-    
-    
-    console.log(num2)
-    
-});
+
+      two.addEventListener('click', function(){
+        if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || typeof arr[0] === 'string'){
+            displayScreen.textContent = 2;
+            arr.push(2)
+            clickCount = 0;
+        }
+        else if(clickCount === 2){
+            displayScreen.textContent += 2
+            let result = Number(arr[arr.length - 1] + '2');
+            arr.pop()
+            arr.push(result)        
+            clickCount = 0;
+          }
+          else if(displayScreen.textContent.length > 2){
+            display.textContent += 2
+            let result = Number(arr[arr.length - 1] + '2');
+            arr.pop()
+            arr.push(result)
+            console.log('yessss')
+            clickCount = 0;
+           
+        }
+        else{
+            displayScreen.textContent += 2
+            let result = Number(arr[arr.length - 1] + '2');
+            arr.pop()
+            arr.push(result)
+            console.log('yessss')
+        }
+            console.log(displayScreen.textContent)
+            num2 = Number(displayScreen.textContent)
+            console.log(arr)
+    })
 
 
 three.addEventListener('click', function(){
@@ -177,8 +238,11 @@ multiply.addEventListener('click', function(){
 
 });
 
-add.addEventListener('click', function(){
-    console.log(addition())
+addButton.addEventListener('click', function(){
+    displayScreen.textContent = '+'
+    arr.push('+')
+    console.log(displayScreen.textContent)
+    // console.log(addition())
 });
 
 subtract.addEventListener('click', function(){
@@ -186,18 +250,23 @@ subtract.addEventListener('click', function(){
 });
 
 equal.addEventListener('click', function(){
-       displayScreen.textContent = (operate(addition, num1, num2))
+    //    displayScreen.textContent = (operate(addition, num1, num2))
     // displayScreen.textContent = (operate(addition, 3, 4))
     // displayScreen.textContent = (operate(multiplication, 3, 4))
     
+    displayScreen.textContent = add(arr)
+    let result = add(arr)
+     arr = []
+     arr.push(result)
+     console.log(typeof result)
+
 });
 
 clearButton.addEventListener('click', function(){
-    displayScreen.textContent = 0;
-  num1 = 0;
-  num2 = 0;
-  console.log(num1)
-  console.clear()
+    displayScreen.textContent = 0
+    arr = []
+    console.clear()
+  
 });
 
 percentage.addEventListener('click', function(){
