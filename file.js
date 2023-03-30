@@ -68,10 +68,21 @@ function add(arr){
     let sum = 0;
     
     for(let i = 0; i < arr.length; i++){
-        if(arr[i] !== "+"){
+        if(arr[i] !== "+" && arr[i] !== "*" && arr[i] !== "-"){
             sum += Number(arr[i])
-        }else if(displayScreen.textContent == "-"){
+        }
+         else if(arr[i] !== "+" && displayScreen.textContent == "-"){
             sum += (-arr[i])
+        }  
+         else if(arr[i] !== "+" && arr[i] == "*"){
+            sum *= (arr[i + 1] )  
+            console.log(typeof Number(arr[i]))
+            console.log(i)
+            arr.splice((i + 1), 2)
+            
+            // if(arr.length > 3){
+              
+            // }
         }
     } 
     return sum
@@ -95,7 +106,7 @@ zero.addEventListener('click', function(){
 
 one.addEventListener('click', function(){
     clickCount++
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == display.textContent == 0 || displayScreen.textContent == '+' || display.textContent == '*'){
          displayScreen.textContent = 1;
          arr.push(1)
     } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
@@ -147,7 +158,7 @@ one.addEventListener('click', function(){
 
 
       two.addEventListener('click', function(){
-        if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+        if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
             displayScreen.textContent = 2;
             arr.push(2)
             clickCount = 0;
@@ -186,7 +197,7 @@ one.addEventListener('click', function(){
 
 
 three.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 3;
         arr.push(3)
         clickCount = 0;
@@ -461,7 +472,10 @@ divide.addEventListener('click', function(){
 });
 
 multiply.addEventListener('click', function(){
-
+    displayScreen.textContent = '*'
+    arr.push('*')
+    console.log(displayScreen.textContent)
+    console.log(arr)
 });
 
 addButton.addEventListener('click', function(){
@@ -487,7 +501,7 @@ equal.addEventListener('click', function(){
     displayScreen.textContent = operate(arr)
     let result = operate(arr)
      arr = []
-     arr.push(result.toString())
+     arr.push(displayScreen.textContent)
      console.log(typeof result)
      console.log(arr)
 });
