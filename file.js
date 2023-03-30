@@ -98,7 +98,7 @@ one.addEventListener('click', function(){
     if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
          displayScreen.textContent = 1;
          arr.push(1)
-    } else if(typeof arr[0] == 'string' && arr.length == 1 ){
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
         arr = []
         arr.push(1)
         displayScreen.textContent = 1
@@ -151,7 +151,7 @@ one.addEventListener('click', function(){
             displayScreen.textContent = 2;
             arr.push(2)
             clickCount = 0;
-        } else if(typeof arr[0] == 'string' && arr.length == 1 ){
+        } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
             arr = []
             arr.push(2)
             displayScreen.textContent = 2
@@ -190,7 +190,7 @@ three.addEventListener('click', function(){
         displayScreen.textContent = 3;
         arr.push(3)
         clickCount = 0;
-    } else if(typeof arr[0] == 'string' && arr.length == 1 ){
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-' ){
         arr = []
         arr.push(3)
         displayScreen.textContent = 3
@@ -223,54 +223,239 @@ three.addEventListener('click', function(){
         console.log(arr)
 });
 
+
 four.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 4;
-    } else {
-            displayScreen.textContent += 4;
-    }; 
-});
+        arr.push(4)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(4)
+        displayScreen.textContent = 4
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 4
+        let result = Number(arr[arr.length - 1] + '4');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 4
+        let result = Number(arr[arr.length - 1] + '4');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 4
+        let result = Number(arr[arr.length - 1] + '4');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
+
 
 five.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 5;
-    } else {
-            displayScreen.textContent += 5;
-    }; 
-});
+        arr.push(5)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(5)
+        displayScreen.textContent = 5
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 5
+        let result = Number(arr[arr.length - 1] + '5');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 5
+        let result = Number(arr[arr.length - 1] + '5');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 5
+        let result = Number(arr[arr.length - 1] + '5');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
+
 
 six.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 6;
-    } else {
-            displayScreen.textContent += 6;
-    }; 
-});
+        arr.push(6)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(6)
+        displayScreen.textContent = 6
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 6
+        let result = Number(arr[arr.length - 1] + '6');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 6
+        let result = Number(arr[arr.length - 1] + '6');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 6
+        let result = Number(arr[arr.length - 1] + '6');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
+
 
 seven.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 7;
-    } else {
-            displayScreen.textContent += 7;
-    }; 
-});
+        arr.push(7)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(7)
+        displayScreen.textContent = 7
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 7
+        let result = Number(arr[arr.length - 1] + '7');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 7
+        let result = Number(arr[arr.length - 1] + '7');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 7
+        let result = Number(arr[arr.length - 1] + '7');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
+
 
 eight.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
-         displayScreen.textContent = 8;
-    } else {
-            displayScreen.textContent += 8;
-    }; 
-});
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+        displayScreen.textContent = 8;
+        arr.push(8)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(8)
+        displayScreen.textContent = 8
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 8
+        let result = Number(arr[arr.length - 1] + '8');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 8
+        let result = Number(arr[arr.length - 1] + '8');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 2
+        let result = Number(arr[arr.length - 1] + '8');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
+
 
 nine.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 9;
-    } else {
-            displayScreen.textContent += 9;
-    }; 
-});
-
+        arr.push(9)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
+        arr = []
+        arr.push(9)
+        displayScreen.textContent = 9
+    }
+    else if(clickCount === 2){
+        displayScreen.textContent += 9
+        let result = Number(arr[arr.length - 1] + '9');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 9
+        let result = Number(arr[arr.length - 1] + '9');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 9
+        let result = Number(arr[arr.length - 1] + '9');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
+})
 divide.addEventListener('click', function(){
 
 });
