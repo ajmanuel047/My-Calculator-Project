@@ -33,22 +33,12 @@ const time = document.querySelector('.time')
  let hoursMin = currDate.getHours() + ':' + currDate.getMinutes();
  time.textContent = hoursMin
 
- let clickCount = 0
-// let num1 = undefined;
-// let num2 = undefined;
+let clickCount = 0
 let arr = [];
-displayScreen.textContent = 0;
-let displayScreenValues = displayScreen;
-let num1 = 0;
-let num2 = 0;
-// console.log(num1)
-// // console.log(num2)
-// console.log(num1 - num2)
+
 let addition = () => {
     return '+' ;
 }; 
-//  addition(num1, num2)
-
 
 let subtraction = (num2, num1) => {
     return num2 - num1;
@@ -71,9 +61,9 @@ function add(arr){
         if(arr[i] !== "+" && arr[i] !== "*" && arr[i] !== "-"){
             sum += Number(arr[i])
         }
-         else if(arr[i] !== "+" && displayScreen.textContent == "-"){
+        else if(arr[i] !== "+" && displayScreen.textContent == "-"){
             sum += (-arr[i])
-        }  
+        } 
          else if(arr[i] !== "+" && arr[i] == "*"){
             sum *= (arr[i + 1] )  
             console.log(typeof Number(arr[i]))
@@ -106,8 +96,9 @@ zero.addEventListener('click', function(){
 
 one.addEventListener('click', function(){
     clickCount++
-    if(displayScreen.textContent == 0 || displayScreen.textContent == display.textContent == 0 || displayScreen.textContent == '+' || display.textContent == '*'){
-         displayScreen.textContent = 1;
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+         
+        displayScreen.textContent = 1;
          arr.push(1)
     } else if(typeof arr[0] == 'string' && arr.length == 1 && arr[0] !== '-'){
         arr = []
@@ -236,7 +227,7 @@ three.addEventListener('click', function(){
 
 
 four.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 4;
         arr.push(4)
         clickCount = 0;
@@ -275,7 +266,7 @@ four.addEventListener('click', function(){
 
 
 five.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 5;
         arr.push(5)
         clickCount = 0;
@@ -314,7 +305,7 @@ five.addEventListener('click', function(){
 
 
 six.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 6;
         arr.push(6)
         clickCount = 0;
@@ -353,7 +344,7 @@ six.addEventListener('click', function(){
 
 
 seven.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 7;
         arr.push(7)
         clickCount = 0;
@@ -392,7 +383,7 @@ seven.addEventListener('click', function(){
 
 
 eight.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 8;
         arr.push(8)
         clickCount = 0;
@@ -431,7 +422,7 @@ eight.addEventListener('click', function(){
 
 
 nine.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
         displayScreen.textContent = 9;
         arr.push(9)
         clickCount = 0;
