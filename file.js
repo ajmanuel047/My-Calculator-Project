@@ -96,7 +96,7 @@ one.addEventListener('click', function(){
     if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
          displayScreen.textContent = 1;
          arr.push(1)
-    } else if(typeof arr[0] == 'string'){
+    } else if(typeof arr[0] == 'string' && arr.length == 1 ){
         arr = []
         arr.push(1)
         displayScreen.textContent = 1
@@ -149,7 +149,7 @@ one.addEventListener('click', function(){
             displayScreen.textContent = 2;
             arr.push(2)
             clickCount = 0;
-        } else if(typeof arr[0] == 'string'){
+        } else if(typeof arr[0] == 'string' && arr.length == 1 ){
             arr = []
             arr.push(2)
             displayScreen.textContent = 2
