@@ -61,9 +61,13 @@ function add(arr){
         if(arr[i] !== "+" && arr[i] !== "*" && arr[i] !== "-"){
             sum += Number(arr[i])
         }
-        else if(arr[i] !== "+" && displayScreen.textContent == "-"){
-            sum += (-arr[i])
-        } 
+        if(arr[i] == "-"){
+            // console.log(arr[arr.indexOf(arr[i]) + 1] )
+            sum -= (arr[i + 1] )  
+            console.log(typeof Number(arr[i]))
+            console.log(i)
+            arr.splice((i + 1), 1)
+          }  
          else if(arr[i] !== "+" && arr[i] == "*"){
             sum *= (arr[i + 1] )  
             console.log(typeof Number(arr[i]))
@@ -96,7 +100,7 @@ zero.addEventListener('click', function(){
 
 one.addEventListener('click', function(){
     clickCount++
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
          
         displayScreen.textContent = 1;
          arr.push(1)
@@ -149,7 +153,7 @@ one.addEventListener('click', function(){
 
 
       two.addEventListener('click', function(){
-        if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+        if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
             displayScreen.textContent = 2;
             arr.push(2)
             clickCount = 0;
@@ -188,7 +192,7 @@ one.addEventListener('click', function(){
 
 
 three.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 3;
         arr.push(3)
         clickCount = 0;
@@ -227,7 +231,7 @@ three.addEventListener('click', function(){
 
 
 four.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 4;
         arr.push(4)
         clickCount = 0;
@@ -266,7 +270,7 @@ four.addEventListener('click', function(){
 
 
 five.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 5;
         arr.push(5)
         clickCount = 0;
@@ -305,7 +309,7 @@ five.addEventListener('click', function(){
 
 
 six.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 6;
         arr.push(6)
         clickCount = 0;
@@ -344,7 +348,7 @@ six.addEventListener('click', function(){
 
 
 seven.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 7;
         arr.push(7)
         clickCount = 0;
@@ -383,7 +387,7 @@ seven.addEventListener('click', function(){
 
 
 eight.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 8;
         arr.push(8)
         clickCount = 0;
@@ -422,7 +426,7 @@ eight.addEventListener('click', function(){
 
 
 nine.addEventListener('click', function(){
-    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*'){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+' || displayScreen.textContent == '*' || displayScreen.textContent == '-'){
         displayScreen.textContent = 9;
         arr.push(9)
         clickCount = 0;
