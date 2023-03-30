@@ -70,6 +70,8 @@ function add(arr){
     for(let i = 0; i < arr.length; i++){
         if(arr[i] !== "+"){
             sum += Number(arr[i])
+        }else if(displayScreen.textContent == "-"){
+            sum += (-arr[i])
         }
     } 
     return sum
@@ -286,7 +288,10 @@ addButton.addEventListener('click', function(){
 });
 
 subtract.addEventListener('click', function(){
-
+    displayScreen.textContent = '-'
+    arr.push('-')
+    console.log(displayScreen.textContent)
+    console.log(arr)
 });
 
 equal.addEventListener('click', function(){
