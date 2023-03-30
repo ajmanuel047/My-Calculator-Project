@@ -184,11 +184,41 @@ one.addEventListener('click', function(){
 
 
 three.addEventListener('click', function(){
-    if(displayScreen.textContent == 0){
+    if(displayScreen.textContent == 0 || displayScreen.textContent == '+'){
         displayScreen.textContent = 3;
-    } else {
-            displayScreen.textContent += 3;
-    }; 
+        arr.push(3)
+        clickCount = 0;
+    } else if(typeof arr[0] == 'string' && arr.length == 1 ){
+        arr = []
+        arr.push(3)
+        displayScreen.textContent = 3
+    }
+    else if(clickCount === 3){
+        displayScreen.textContent += 3
+        let result = Number(arr[arr.length - 1] + '3');
+        arr.pop()
+        arr.push(result)        
+        clickCount = 0;
+      }
+      else if(displayScreen.textContent.length > 2){
+        display.textContent += 3
+        let result = Number(arr[arr.length - 1] + '3');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+        clickCount = 0;
+       
+    }
+    else{
+        displayScreen.textContent += 3
+        let result = Number(arr[arr.length - 1] + '3');
+        arr.pop()
+        arr.push(result)
+        console.log('yessss')
+    }
+        console.log(displayScreen.textContent)
+        num2 = Number(displayScreen.textContent)
+        console.log(arr)
 });
 
 four.addEventListener('click', function(){
