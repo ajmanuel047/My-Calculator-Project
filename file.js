@@ -26,6 +26,7 @@ let hoursMin = currDate.getHours() + ":" + currDate.getMinutes();
 time.textContent = hoursMin;
 
 let clickCount = 0;
+
 let arr = [];
 
 // let addition = () => {
@@ -47,6 +48,7 @@ let arr = [];
 function operator() {
   let result = arr[0];
   for (let i = 0; i < arr.length; i++) {
+    let value = Number(arr[i]);
     if (arr[i] == "+") {
       result += arr[i + 1];
     } else if (arr[i] == "-") {
@@ -55,11 +57,449 @@ function operator() {
       result *= arr[i + 1];
     } else if (arr[i] == "/") {
       result /= arr[i + 1];
+    } else if (Number.isInteger(value) == false && arr[i + 1] == "+") {
+      result = value;
     }
   }
   return result;
 }
 
+/* Keydown start */
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode == 48) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 0;
+
+      arr.push(0);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(0);
+      display.textContent = 0;
+    } else if (clickCount === 2) {
+      display.textContent += 0;
+      let result = Number(arr[arr.length - 1] + "0");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 0;
+      let result = Number(arr[arr.length - 1] + "0");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 0;
+      let result = Number(arr[arr.length - 1] + "0");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode === 49) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 1;
+
+      arr.push(1);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(1);
+      display.textContent = 1;
+    } else if (clickCount === 2) {
+      display.textContent += 1;
+      let result = Number(arr[arr.length - 1] + "1");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 1;
+      let result = Number(arr[arr.length - 1] + "1");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 1;
+      let result = Number(arr[arr.length - 1] + "1");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 50) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 2;
+
+      arr.push(2);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(2);
+      display.textContent = 2;
+    } else if (clickCount === 2) {
+      display.textContent += 2;
+      let result = Number(arr[arr.length - 1] + "2");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 2;
+      let result = Number(arr[arr.length - 1] + "2");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 2;
+      let result = Number(arr[arr.length - 1] + "2");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 51) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 3;
+
+      arr.push(3);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(3);
+      display.textContent = 3;
+    } else if (clickCount === 2) {
+      display.textContent += 3;
+      let result = Number(arr[arr.length - 1] + "3");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 3;
+      let result = Number(arr[arr.length - 1] + "3");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 3;
+      let result = Number(arr[arr.length - 1] + "3");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 52) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 4;
+
+      arr.push(4);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(4);
+      display.textContent = 4;
+    } else if (clickCount === 2) {
+      display.textContent += 4;
+      let result = Number(arr[arr.length - 1] + "4");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 4;
+      let result = Number(arr[arr.length - 1] + "4");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 4;
+      let result = Number(arr[arr.length - 1] + "4");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 53) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 5;
+
+      arr.push(5);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(5);
+      display.textContent = 5;
+    } else if (clickCount === 2) {
+      display.textContent += 5;
+      let result = Number(arr[arr.length - 1] + "5");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 5;
+      let result = Number(arr[arr.length - 1] + "5");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 5;
+      let result = Number(arr[arr.length - 1] + "5");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 54) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 6;
+
+      arr.push(6);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(6);
+      display.textContent = 6;
+    } else if (clickCount === 2) {
+      display.textContent += 6;
+      let result = Number(arr[arr.length - 1] + "6");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 6;
+      let result = Number(arr[arr.length - 1] + "6");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 6;
+      let result = Number(arr[arr.length - 1] + "6");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 55) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 7;
+
+      arr.push(7);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(7);
+      display.textContent = 7;
+    } else if (clickCount === 2) {
+      display.textContent += 7;
+      let result = Number(arr[arr.length - 1] + "7");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 7;
+      let result = Number(arr[arr.length - 1] + "7");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 7;
+      let result = Number(arr[arr.length - 1] + "7");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 56) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 8;
+
+      arr.push(8);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(8);
+      display.textContent = 8;
+    } else if (clickCount === 2) {
+      display.textContent += 8;
+      let result = Number(arr[arr.length - 1] + "8");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 8;
+      let result = Number(arr[arr.length - 1] + "8");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 8;
+      let result = Number(arr[arr.length - 1] + "8");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  } else if (e.keyCode == 57) {
+    if (
+      display.textContent == 0 ||
+      display.textContent == "+" ||
+      display.textContent == "*" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      display.textContent = 9;
+
+      arr.push(9);
+    }
+    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+    //        display.textContent = -3
+    //        arr.push(-3)
+    //     }
+    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      arr = [];
+      arr.push(9);
+      display.textContent = 9;
+    } else if (clickCount === 2) {
+      display.textContent += 9;
+      let result = Number(arr[arr.length - 1] + "9");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+    } else if (display.textContent.length > 2) {
+      display.textContent += 9;
+      let result = Number(arr[arr.length - 1] + "9");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+      clickCount = 0;
+    } else {
+      display.textContent += 9;
+      let result = Number(arr[arr.length - 1] + "9");
+      arr.pop();
+      arr.push(result);
+      console.log("yessss");
+    }
+    console.log(display.textContent);
+
+    console.log(arr);
+  }
+});
+
+/*keydown end */
 zero.addEventListener("click", function () {
   clickCount++;
   if (
@@ -71,7 +511,16 @@ zero.addEventListener("click", function () {
   ) {
     display.textContent = 0;
     arr.push(0);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  } 
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "0";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(0);
     display.textContent = 0;
@@ -104,7 +553,7 @@ zero.addEventListener("click", function () {
   console.log(arr);
 });
 
-one.addEventListener("click", function () {
+one.addEventListener("click", function (e) {
   clickCount++;
   if (
     display.textContent == 0 ||
@@ -116,7 +565,16 @@ one.addEventListener("click", function () {
     display.textContent = 1;
 
     arr.push(1);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "1";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(1);
     display.textContent = 1;
@@ -167,7 +625,16 @@ two.addEventListener("click", function () {
     display.textContent = 2;
 
     arr.push(2);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "2";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(2);
     display.textContent = 2;
@@ -207,7 +674,16 @@ three.addEventListener("click", function () {
     display.textContent = 3;
 
     arr.push(3);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "3";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(3);
     display.textContent = 3;
@@ -247,7 +723,16 @@ four.addEventListener("click", function () {
     display.textContent = 4;
 
     arr.push(4);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "4";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(4);
     display.textContent = 4;
@@ -287,7 +772,16 @@ five.addEventListener("click", function () {
     display.textContent = 5;
 
     arr.push(5);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "5";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(5);
     display.textContent = 5;
@@ -327,7 +821,16 @@ six.addEventListener("click", function () {
     display.textContent = 6;
 
     arr.push(6);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "6";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(6);
     display.textContent = 6;
@@ -367,7 +870,16 @@ seven.addEventListener("click", function () {
     display.textContent = 7;
 
     arr.push(7);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "7";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(7);
     display.textContent = 7;
@@ -407,7 +919,16 @@ eight.addEventListener("click", function () {
     display.textContent = 8;
 
     arr.push(8);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "8";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(8);
     display.textContent = 8;
@@ -447,7 +968,16 @@ nine.addEventListener("click", function () {
     display.textContent = 9;
 
     arr.push(9);
-  } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+  }
+  else if (arr.length == 1 && arr.toString()[1] == ".") {
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString() + "9";
+    arr.push(string);
+    display.textContent = string;
+  } 
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
     arr = [];
     arr.push(9);
     display.textContent = 9;
@@ -476,6 +1006,53 @@ nine.addEventListener("click", function () {
   console.log(arr);
 });
 
+decimal.addEventListener("click", function () {
+  if (
+    display.textContent !== "+" ||
+    display.textContent !== "-" ||
+    display.textContent !== "/" ||
+    display.textContent !== "*"
+  ) {
+    let result = display.textContent + ".";
+    display.textContent = result;
+    let index = arr.indexOf(display.textContent);
+    arr.splice(index, 1, result);
+    // arr.push(result)
+  } else if (arr.length == 1) {
+  }
+  //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+  //        display.textContent = -3
+  //        arr.push(-3)
+  //     }
+  else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+    arr = [];
+    arr.push(".");
+    display.textContent = ".";
+  } else if (clickCount === 2) {
+    display.textContent += ".";
+    let result = Number(arr[arr.length - 1] + ".");
+    arr.pop();
+    arr.push(result);
+    clickCount = 0;
+  } else if (display.textContent.length > 2) {
+    display.textContent += ".";
+    let result = Number(arr[arr.length - 1] + ".");
+    arr.pop();
+    arr.push(result);
+    console.log("yessss");
+    clickCount = 0;
+  } else {
+    display.textContent += ".";
+    let result = Number(arr[arr.length - 1] + ".");
+    arr.pop();
+    arr.push(result);
+    console.log("yessss");
+  }
+  console.log(display.textContent);
+
+  console.log(arr);
+});
+
 divide.addEventListener("click", function () {
   display.textContent = "/";
   arr.push("/");
@@ -491,7 +1068,6 @@ multiply.addEventListener("click", function () {
 });
 
 addButton.addEventListener("click", function () {
-  console.log(addition());
   display.textContent = "+";
   arr.push("+");
 });
@@ -503,9 +1079,17 @@ subtract.addEventListener("click", function () {
   console.log(arr);
 });
 
+// decimal.addEventListener("click", function () {
+//   display.textContent = ".";
+//   arr.push(".");
+//   console.log(display.textContent);
+//   console.log(arr);
+// });
+
 equal.addEventListener("click", function () {
   display.textContent = operator(arr);
-
+  arr = [];
+  arr.push(display.textContent);
   console.log(display.textContent);
   console.log(arr);
 });
@@ -520,10 +1104,10 @@ percentage.addEventListener("click", function () {
   // let result = arr[3] / 100
   // let value = arr.indexOf(4)
   // arr.splice(value, 1, result)
-  let value = arr.indexOf(display.textContent)
+  let value = arr.indexOf(display.textContent);
   let result = display.textContent / 100;
- 
-  arr.splice(value, 1, result)
+
+  arr.splice(value, 1, result);
   // arr.unshift(result);
   display.textContent = result;
   // arr.splice(1,1)
@@ -532,14 +1116,25 @@ percentage.addEventListener("click", function () {
 plusMinus.addEventListener("click", function () {});
 
 decimal.addEventListener("click", function () {});
+console.log(display.textContent.length);
 /*
 you working on percentage as it is not pushing to arr when it is clicked
 maybe it is because i need to be connected to internet to refresh the page properly
 just confirm it.(now working)
 
-Display screen must not be more than 
+Display screen must not be more than 9 use display.textContent.length
 make the number buttons clickable through the keyboard
+
+number after equal to is pressed concatenates. fix this
 
 when you click an operator more than ones it can't be used and 
 therefore displays NaN. Fix this
+
+i need you to reduce the code. Too many repeated codes. The 
+clicks i think can be reduced to just one and the keydown should
+also be reduced to only one 
+
+keydown for the signs 
+currently trying to figure out decimal
+error message when you input what can't be solved
 */
