@@ -46,7 +46,7 @@ let arr = [];
 //   return num2 / num1;
 // };
 
-display.style.fontSize = '3.5rem'
+display.style.fontSize = "3.5rem";
 function operator() {
   let result = Number(arr[0]);
   for (let i = 0; i < arr.length; i++) {
@@ -69,7 +69,7 @@ function operator() {
 /* Keydown start */
 document.addEventListener("keydown", function (e) {
   if (e.keyCode == 48) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -78,7 +78,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 0;
-  
+
         arr.push(0);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -110,83 +110,78 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
-      console.log(arr);
-    }
-    else {
-   
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
-      }, 2000);
-    }
-   
-  } else if (e.keyCode === 49) {
-    if(display.textContent.length < 9){
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 1;
-  
-        arr.push(1);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(1);
-        display.textContent = 1;
-      } else if (clickCount === 2) {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
-      } else {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-      }
-      console.log(display.textContent);
-  
+
       console.log(arr);
     } else {
-   
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
+  } else if (e.keyCode === 49) {
+    if (display.textContent.length < 9) {
+      if (
+        display.textContent == 0 ||
+        display.textContent == "+" ||
+        display.textContent == "*" ||
+        display.textContent == "-" ||
+        display.textContent == "/"
+      ) {
+        display.textContent = 1;
+
+        arr.push(1);
+      }
+      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
+      //        display.textContent = -3
+      //        arr.push(-3)
+      //     }
+      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+        arr = [];
+        arr.push(1);
+        display.textContent = 1;
+      } else if (clickCount === 2) {
+        display.textContent += 1;
+        let result = Number(arr[arr.length - 1] + "1");
+        arr.pop();
+        arr.push(result);
+        clickCount = 0;
+      } else if (display.textContent.length > 2) {
+        display.textContent += 1;
+        let result = Number(arr[arr.length - 1] + "1");
+        arr.pop();
+        arr.push(result);
+        console.log("yessss");
+        clickCount = 0;
+      } else {
+        display.textContent += 1;
+        let result = Number(arr[arr.length - 1] + "1");
+        arr.pop();
+        arr.push(result);
+        console.log("yessss");
+      }
+      console.log(display.textContent);
+
+      console.log(arr);
+    } else {
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = "visible";
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = "hidden";
+      }, 2000);
+    }
   } else if (e.keyCode == 50) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -195,7 +190,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 2;
-  
+
         arr.push(2);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -227,25 +222,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-    
   } else if (e.keyCode == 51) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -254,7 +246,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 3;
-  
+
         arr.push(3);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -286,25 +278,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
   } else if (e.keyCode == 52) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -313,7 +302,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 4;
-  
+
         arr.push(4);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -345,25 +334,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
   } else if (e.keyCode == 53) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -372,7 +358,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 5;
-  
+
         arr.push(5);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -404,25 +390,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-    
   } else if (e.keyCode == 54) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -431,7 +414,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 6;
-  
+
         arr.push(6);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -463,25 +446,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-    
   } else if (e.keyCode == 55) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -490,7 +470,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 7;
-  
+
         arr.push(7);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -522,25 +502,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
   } else if (e.keyCode == 56) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -549,7 +526,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 8;
-  
+
         arr.push(8);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -581,25 +558,22 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
   } else if (e.keyCode == 57) {
-    if(display.textContent.length < 9){
+    if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -608,7 +582,7 @@ document.addEventListener("keydown", function (e) {
         display.textContent == "/"
       ) {
         display.textContent = 9;
-  
+
         arr.push(9);
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
@@ -640,23 +614,20 @@ document.addEventListener("keydown", function (e) {
         console.log("yessss");
       }
       console.log(display.textContent);
-  
+
       console.log(arr);
-    }
-    else {
-   
+    } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
+        message.style.visibility = "visible";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
+        message.style.visibility = "hidden";
       }, 2000);
     }
-   
   }
 });
 
@@ -712,16 +683,16 @@ zero.addEventListener("click", function () {
       console.log("yessss");
     }
   } else {
-       setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = 'visible'
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = 'hidden'
-      }, 2000);    
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
   }
 
   console.log(`length : ${display.textContent.length}`);
@@ -782,16 +753,16 @@ one.addEventListener("click", function (e) {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(`length : ${display.textContent.length}`);
 
@@ -852,18 +823,18 @@ two.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }else {
+  } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -918,16 +889,16 @@ three.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -982,16 +953,16 @@ four.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -1046,16 +1017,16 @@ five.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -1110,16 +1081,16 @@ six.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -1174,16 +1145,16 @@ seven.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -1238,16 +1209,16 @@ eight.addEventListener("click", function () {
     }
   } else {
     setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'visible'
-   }, 50);
-   setTimeout(function testing() {
-     // textPara.remove();
-     // form.style.visibility = "visible";
-     message.style.visibility = 'hidden'
-   }, 2000);    
-}
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  }
 
   console.log(display.textContent);
 
@@ -1300,7 +1271,7 @@ nine.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  } 
+  }
 
   console.log(display.textContent);
 
@@ -1358,27 +1329,82 @@ decimal.addEventListener("click", function () {
 });
 
 divide.addEventListener("click", function () {
-  display.textContent = "/";
-  arr.push("/");
+  if(display.textContent == '/'){
+    console.log('what showed')
+    let index = arr.indexOf(display.textContent);
+    arr.splice(index, 1);
+
+  } 
+  if (arr.length !== 0) {
+    display.textContent = "/";
+    arr.push("/");
+    console.log(display.textContent);
+    console.log(arr);
+  } else {
+    arr = [];
+  }
+
   console.log(display.textContent);
   console.log(arr);
 });
 
 multiply.addEventListener("click", function () {
-  display.textContent = "*";
-  arr.push("*");
+  if(display.textContent == '*'){
+    console.log('what showed')
+    let index = arr.indexOf(display.textContent);
+    arr.splice(index, 1);
+
+  } 
+  if (arr.length !== 0) {
+    display.textContent = "*";
+    arr.push("*");
+    console.log(display.textContent);
+    console.log(arr);
+  } else {
+    arr = [];
+  }
+
   console.log(display.textContent);
   console.log(arr);
 });
 
 addButton.addEventListener("click", function () {
-  display.textContent = "+";
-  arr.push("+");
+  if(display.textContent == '+'){
+    console.log('what showed')
+    let index = arr.indexOf(display.textContent);
+    arr.splice(index, 1);
+
+  } 
+  if (arr.length !== 0) {
+    display.textContent = "+";
+    arr.push("+");
+    console.log(display.textContent);
+    console.log(arr);
+  } else {
+    arr = [];
+  }
+
+  console.log(display.textContent);
+  console.log(arr);
 });
 
 subtract.addEventListener("click", function () {
-  display.textContent = "-";
-  arr.push("-");
+  if(display.textContent == '-'){
+    console.log('what showed')
+    let index = arr.indexOf(display.textContent);
+    arr.splice(index, 1);
+
+  } 
+  if (arr.length !== 0) {
+    display.textContent = "-";
+    arr.push("-");
+    console.log(display.textContent);
+    console.log(arr);
+  }  
+  else {
+    arr = [];
+  }
+
   console.log(display.textContent);
   console.log(arr);
 });
@@ -1408,13 +1434,19 @@ percentage.addEventListener("click", function () {
   // let result = arr[3] / 100
   // let value = arr.indexOf(4)
   // arr.splice(value, 1, result)
-  let value = arr.indexOf(display.textContent);
-  let result = display.textContent / 100;
+  if (arr.length !== 0) {
+    let value = arr.indexOf(display.textContent);
+    let result = display.textContent / 100;
 
-  arr.splice(value, 1, result);
-  // arr.unshift(result);
-  display.textContent = result;
-  // arr.splice(1,1)
+    console.log(result);
+    // arr.unshift(result);
+    display.textContent = result;
+    arr.splice(value, 1, result);
+    // arr.splice(1,1)
+    document.body.style.backgroundColor = "green";
+  } else {
+    arr = [];
+  }
 });
 
 plusMinus.addEventListener("click", function () {});
@@ -1422,41 +1454,60 @@ plusMinus.addEventListener("click", function () {});
 decimal.addEventListener("click", function () {});
 console.log(display.textContent.length);
 /*
-you working on percentage as it is not pushing to arr when it is clicked
+not done
+1. percentage block code just doesn't seem to be pushing or splicing
+ask gpt for the reason
+
+2. when you click an operator more than ones it can't be used and 
+therefore displays NaN. Fix this
+
+3. i need you to reduce the code. Too many repeated codes. The 
+clicks i think can be reduced to just one and the keydown should
+also be reduced to only one 
+
+4. keydown for the signs 
+
+5. error message when you input what can't be solved
+
+6. make sure a sign can be clicked only ones
+
+7. sign and then decimal e.g /. decimal seems to be giving me a shit load of problems
+
+done
+1. you working on percentage as it is not pushing to arr when it is clicked
 maybe it is because i need to be connected to internet to refresh the page properly
 just confirm it.(done)
 
-Display screen must not be more than 9 use display.textContent.length
+2. Display screen must not be more than 9 use display.textContent.length
 make the number buttons clickable through the keyboard(
   fix this using if(display.textContent < 9){//the number
   code goes here} done
 )
 
-number after equal to is pressed concatenates. fix this (done)
+3. number after equal to is pressed concatenates. fix this (done)
 
-when you click an operator more than ones it can't be used and 
-therefore displays NaN. Fix this
-
-i need you to reduce the code. Too many repeated codes. The 
-clicks i think can be reduced to just one and the keydown should
-also be reduced to only one 
-
-keydown for the signs 
-currently trying to figure out decimal
-error message when you input what can't be solved
-
-pressing 0 and then a number followed by number operator 
+4. pressing 0 and then a number followed by number operator 
 gives just the number before the operator. 
 (possible thing to try. if the length is 1 and the display 
   is 0, empty the arr)
 e.g ['0', '1', '-', '2'] gives -2 (fixed)
 
-make sure a sign can be clicked only ones
-
-sign and then decimal e.g /.
-
-this plus too dey give me wahala. Now 2 + 3 = 5 + 2 is giving 
+5. this plus too dey give me wahala. Now 2 + 3 = 5 + 2 is giving 
 me 52 instead of 7(fixed by doing this let result = Number(arr[0]);)
 
-decimal seems to be giving me a shit load of problems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */
