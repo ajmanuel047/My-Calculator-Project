@@ -20,6 +20,7 @@ const decimal = document.querySelector(".decimal");
 const display = document.querySelector(".display_screen");
 const buttonsContainer = document.querySelector(".buttons_container");
 const time = document.querySelector(".time");
+const message = document.querySelector(".message");
 
 let currDate = new Date();
 let hoursMin = currDate.getHours() + ":" + currDate.getMinutes();
@@ -45,6 +46,7 @@ let arr = [];
 //   return num2 / num1;
 // };
 
+display.style.fontSize = '3.5rem'
 function operator() {
   let result = Number(arr[0]);
   for (let i = 0; i < arr.length; i++) {
@@ -111,6 +113,19 @@ document.addEventListener("keydown", function (e) {
   
       console.log(arr);
     }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
+    }
    
   } else if (e.keyCode === 49) {
     if(display.textContent.length < 9){
@@ -156,6 +171,18 @@ document.addEventListener("keydown", function (e) {
       console.log(display.textContent);
   
       console.log(arr);
+    } else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
     }
    
   } else if (e.keyCode == 50) {
@@ -203,6 +230,19 @@ document.addEventListener("keydown", function (e) {
   
       console.log(arr);
     }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
+    }
     
   } else if (e.keyCode == 51) {
     if(display.textContent.length < 9){
@@ -248,6 +288,19 @@ document.addEventListener("keydown", function (e) {
       console.log(display.textContent);
   
       console.log(arr);
+    }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
     }
    
   } else if (e.keyCode == 52) {
@@ -295,6 +348,19 @@ document.addEventListener("keydown", function (e) {
   
       console.log(arr);
     }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
+    }
    
   } else if (e.keyCode == 53) {
     if(display.textContent.length < 9){
@@ -340,6 +406,19 @@ document.addEventListener("keydown", function (e) {
       console.log(display.textContent);
   
       console.log(arr);
+    }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
     }
     
   } else if (e.keyCode == 54) {
@@ -387,6 +466,19 @@ document.addEventListener("keydown", function (e) {
   
       console.log(arr);
     }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
+    }
     
   } else if (e.keyCode == 55) {
     if(display.textContent.length < 9){
@@ -432,6 +524,19 @@ document.addEventListener("keydown", function (e) {
       console.log(display.textContent);
   
       console.log(arr);
+    }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
     }
    
   } else if (e.keyCode == 56) {
@@ -479,6 +584,19 @@ document.addEventListener("keydown", function (e) {
   
       console.log(arr);
     }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
+    }
    
   } else if (e.keyCode == 57) {
     if(display.textContent.length < 9){
@@ -524,6 +642,19 @@ document.addEventListener("keydown", function (e) {
       console.log(display.textContent);
   
       console.log(arr);
+    }
+    else {
+   
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);
     }
    
   }
@@ -580,6 +711,17 @@ zero.addEventListener("click", function () {
 
       console.log("yessss");
     }
+  } else {
+       setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'visible'
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message.style.visibility = 'hidden'
+      }, 2000);    
   }
 
   console.log(`length : ${display.textContent.length}`);
@@ -638,7 +780,18 @@ one.addEventListener("click", function (e) {
 
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(`length : ${display.textContent.length}`);
 
@@ -699,7 +852,18 @@ two.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  }else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -752,7 +916,18 @@ three.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -805,7 +980,18 @@ four.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -858,7 +1044,18 @@ five.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -911,7 +1108,18 @@ six.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -964,7 +1172,18 @@ seven.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -1017,7 +1236,18 @@ eight.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } else {
+    setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'visible'
+   }, 50);
+   setTimeout(function testing() {
+     // textPara.remove();
+     // form.style.visibility = "visible";
+     message.style.visibility = 'hidden'
+   }, 2000);    
+}
 
   console.log(display.textContent);
 
@@ -1070,7 +1300,7 @@ nine.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
-  }
+  } 
 
   console.log(display.textContent);
 
