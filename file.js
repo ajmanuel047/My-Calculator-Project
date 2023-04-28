@@ -1329,12 +1329,20 @@ decimal.addEventListener("click", function () {
 });
 
 divide.addEventListener("click", function () {
-  if(display.textContent == '/'){
-    console.log('what showed')
-    let index = arr.indexOf(display.textContent);
+  if (
+    display.textContent == "*" ||
+    display.textContent == "+" ||
+    display.textContent == "-" ||
+    display.textContent == "/"
+  ) {
+    console.log("what showed");
+    // let index = arr.indexOf(display.textContent);
+    // arr.splice(index, 1);
+    let index = arr.length - 1;
+    console.log(index);
     arr.splice(index, 1);
-
-  } 
+    console.log(arr);
+  }
   if (arr.length !== 0) {
     display.textContent = "/";
     arr.push("/");
@@ -1349,12 +1357,20 @@ divide.addEventListener("click", function () {
 });
 
 multiply.addEventListener("click", function () {
-  if(display.textContent == '*'){
-    console.log('what showed')
-    let index = arr.indexOf(display.textContent);
+  if (
+    display.textContent == "*" ||
+    display.textContent == "+" ||
+    display.textContent == "-" ||
+    display.textContent == "/"
+  ) {
+    console.log("what showed");
+    // let index = arr.indexOf(display.textContent);
+    // arr.splice(index, 1);
+    let index = arr.length - 1;
+    console.log(index);
     arr.splice(index, 1);
-
-  } 
+    console.log(arr);
+  }
   if (arr.length !== 0) {
     display.textContent = "*";
     arr.push("*");
@@ -1369,12 +1385,20 @@ multiply.addEventListener("click", function () {
 });
 
 addButton.addEventListener("click", function () {
-  if(display.textContent == '+'){
-    console.log('what showed')
-    let index = arr.indexOf(display.textContent);
+  if (
+    display.textContent == "*" ||
+    display.textContent == "+" ||
+    display.textContent == "-" ||
+    display.textContent == "/"
+  ) {
+    console.log("what showed");
+    // let index = arr.indexOf(display.textContent);
+    // arr.splice(index, 1);
+    let index = arr.length - 1;
+    console.log(index);
     arr.splice(index, 1);
-
-  } 
+    console.log(arr);
+  }
   if (arr.length !== 0) {
     display.textContent = "+";
     arr.push("+");
@@ -1389,19 +1413,26 @@ addButton.addEventListener("click", function () {
 });
 
 subtract.addEventListener("click", function () {
-  if(display.textContent == '-'){
-    console.log('what showed')
-    let index = arr.indexOf(display.textContent);
+  if (
+    display.textContent == "*" ||
+    display.textContent == "+" ||
+    display.textContent == "-" ||
+    display.textContent == "/"
+  ) {
+    console.log("what showed");
+    // let index = arr.indexOf(display.textContent);
+    // arr.splice(index, 1);
+    let index = arr.length - 1;
+    console.log(index);
     arr.splice(index, 1);
-
-  } 
+    console.log(arr);
+  }
   if (arr.length !== 0) {
     display.textContent = "-";
     arr.push("-");
     console.log(display.textContent);
     console.log(arr);
-  }  
-  else {
+  } else {
     arr = [];
   }
 
@@ -1473,6 +1504,9 @@ also be reduced to only one
 
 7. sign and then decimal e.g /. decimal seems to be giving me a shit load of problems
 
+8. make the +/- functional
+
+9. make the display for equal to not be more than 9
 done
 1. you working on percentage as it is not pushing to arr when it is clicked
 maybe it is because i need to be connected to internet to refresh the page properly
@@ -1498,13 +1532,14 @@ me 52 instead of 7(fixed by doing this let result = Number(arr[0]);)
 
 
 
+currently figuring out signs simultaneously been together
+3 * 2 * * 2 is changing to 3, 2 * * 2
 
 
 
 
 
-
-
+9 / 3 * *** 2 works fine
 
 
 
