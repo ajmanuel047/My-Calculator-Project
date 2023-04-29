@@ -67,11 +67,11 @@ function operator() {
   return result;
 }
 
-/* Keydown start */
+/* Keydown start for number buttons*/
 document.addEventListener("keydown", function (e) {
-  if (e.key == '0') {
+  if (e.key == "0") {
     if (display.textContent.length < 9) {
-      if (arr.length == 1 && display.textContent == '0') {
+      if (arr.length == 1 && display.textContent == "0") {
         arr = [];
       }
       if (
@@ -83,7 +83,7 @@ document.addEventListener("keydown", function (e) {
       ) {
         display.textContent = 0;
 
-        00
+        00;
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
       //        display.textContent = -3
@@ -128,7 +128,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '1') {
+  } else if (e.key == "1") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -184,7 +184,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '2') {
+  } else if (e.key == "2") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -240,7 +240,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '3') {
+  } else if (e.key == "3") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -296,7 +296,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '4') {
+  } else if (e.key == "4") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -352,7 +352,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '5') {
+  } else if (e.key == "5") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -408,7 +408,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '6') {
+  } else if (e.key == "6") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -464,7 +464,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '7') {
+  } else if (e.key == "7") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -520,7 +520,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '8') {
+  } else if (e.key == "8") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -576,7 +576,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.key == '9') {
+  } else if (e.key == "9") {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -635,7 +635,137 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-/*keydown end */
+/*keydown end for number buttons*/
+
+/* keydown start for sign buttons*/
+document.addEventListener("keydown", function (e) {
+  if (e.key === "+") {
+    if (
+      display.textContent == "*" ||
+      display.textContent == "+" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      console.log("what showed");
+      // let index = arr.indexOf(display.textContent);
+      // arr.splice(index, 1);
+      let index = arr.length - 1;
+      console.log(index);
+      arr.splice(index, 1);
+      console.log(arr);
+    }
+    if (arr.length !== 0) {
+      display.textContent = "+";
+      arr.push("+");
+      console.log(display.textContent);
+      console.log(arr);
+    } else {
+      arr = [];
+    }
+
+    console.log(display.textContent);
+    console.log(arr);
+  } else if (e.key === "-") {
+    if (
+      display.textContent == "*" ||
+      display.textContent == "+" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      console.log("what showed");
+      // let index = arr.indexOf(display.textContent);
+      // arr.splice(index, 1);
+      let index = arr.length - 1;
+      console.log(index);
+      arr.splice(index, 1);
+      console.log(arr);
+    }
+    if (arr.length !== 0) {
+      display.textContent = "-";
+      arr.push("-");
+      console.log(display.textContent);
+      console.log(arr);
+    } else {
+      arr = [];
+    }
+
+    console.log(display.textContent);
+    console.log(arr);
+  } else if (e.key === "*") {
+    if (
+      display.textContent == "*" ||
+      display.textContent == "+" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      console.log("what showed");
+      // let index = arr.indexOf(display.textContent);
+      // arr.splice(index, 1);
+      let index = arr.length - 1;
+      console.log(index);
+      arr.splice(index, 1);
+      console.log(arr);
+    }
+    if (arr.length !== 0) {
+      display.textContent = "*";
+      arr.push("*");
+      console.log(display.textContent);
+      console.log(arr);
+    } else {
+      arr = [];
+    }
+
+    console.log(display.textContent);
+    console.log(arr);
+  } else if (e.key === "/") {
+    if (
+      display.textContent == "*" ||
+      display.textContent == "+" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+      console.log("what showed");
+      // let index = arr.indexOf(display.textContent);
+      // arr.splice(index, 1);
+      let index = arr.length - 1;
+      console.log(index);
+      arr.splice(index, 1);
+      console.log(arr);
+    }
+    if (arr.length !== 0) {
+      display.textContent = "/";
+      arr.push("/");
+      console.log(display.textContent);
+      console.log(arr);
+    } else {
+      arr = [];
+    }
+
+    console.log(display.textContent);
+    console.log(arr);
+  } else if (e.key === "=" || e.key === "Enter") {
+    display.textContent = operator(arr);
+    arr = [];
+    arr.push(display.textContent);
+    console.log(display.textContent);
+    console.log(arr);
+  } else if (e.key === "Escape") {
+    display.textContent = 0;
+    arr = [];
+    console.clear();
+  } else if (e.key === "%") {
+    if (arr.length !== 0) {
+      let value = arr.indexOf(display.textContent);
+      let result = display.textContent / 100;
+      console.log(result);
+      display.textContent = result;
+      arr.splice(value, 1, result);
+    } else {
+      arr = [];
+    }
+  }
+});
+/* keydown end for sign buttons*/
 zero.addEventListener("click", function () {
   clickCount++;
   if (display.textContent.length < 9) {
@@ -1483,13 +1613,9 @@ percentage.addEventListener("click", function () {
   if (arr.length !== 0) {
     let value = arr.indexOf(display.textContent);
     let result = display.textContent / 100;
-
     console.log(result);
-    // arr.unshift(result);
     display.textContent = result;
     arr.splice(value, 1, result);
-    // arr.splice(1,1)
-    document.body.style.backgroundColor = "green";
   } else {
     arr = [];
   }
