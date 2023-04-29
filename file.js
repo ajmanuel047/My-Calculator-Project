@@ -21,6 +21,7 @@ const display = document.querySelector(".display_screen");
 const buttonsContainer = document.querySelector(".buttons_container");
 const time = document.querySelector(".time");
 const message = document.querySelector(".message");
+const message2 = document.querySelector(".message2");
 
 let currDate = new Date();
 let hoursMin = currDate.getHours() + ":" + currDate.getMinutes();
@@ -1271,6 +1272,17 @@ nine.addEventListener("click", function () {
       arr.push(result);
       console.log("yessss");
     }
+  } else {
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
   }
 
   console.log(display.textContent);
@@ -1480,33 +1492,128 @@ percentage.addEventListener("click", function () {
   }
 });
 
-plusMinus.addEventListener("click", function () {});
+plusMinus.addEventListener("click", function () {
+  if (display.textContent.length < 9) {
+    
+    if (
+      display.textContent == "*" ||
+      display.textContent == "+" ||
+      display.textContent == "-" ||
+      display.textContent == "/"
+    ) {
+    } 
+    else if (display.textContent[0] == "-" && arr.length == 1) {
+      console.log("e work?");
+      let newArr = [];
+      newArr.push(...arr);
+      arr = [];
+      let string = newArr.toString();
+      arr.push(display.textContent.slice(1));
+      display.textContent = display.textContent.slice(1);
+    } 
+     else if(display.textContent[0] == '-' && arr.length > 1 && display.textContent.length < 2){
+      let slicedValues = display.textContent.slice(1)
+      console.log(slicedValues)
+      let displayValue = Number(slicedValues)
+      console.log('checking')
+      console.log(display.textContent[1])
+      display.textContent = slicedValues
+      let length = arr.length
+      console.log(length)
+      arr.splice(length - 1, 1, displayValue)
+      console.log(arr)
+    }
+    else if(display.textContent == '0'){
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message2.style.visibility = "visible";
+      }, 50);
+      setTimeout(function testing() {
+        // textPara.remove();
+        // form.style.visibility = "visible";
+        message2.style.visibility = "hidden";
+      }, 2000);
+    }
+    else if(display.textContent[0] !== '-') {
+      display.textContent = "-" + display.textContent;
+      arr.push(Number(display.textContent));
+  
+      let index = arr.length - 1;
+      console.log(index);
+      arr.splice(index - 1, 1);
+      console.log(arr);
+    }
+    else if(display.textContent[0] == '-' && arr.length > 1) {
+      let slicedValues = display.textContent.slice(1)
+      console.log(slicedValues)
+      let displayValue = Number(slicedValues)
+      console.log('checking')
+      console.log(display.textContent[1])
+      display.textContent = slicedValues
+      let length = arr.length
+      console.log(length)
+      arr.splice(length - 1, 1, displayValue)
+      console.log(arr)
+    }
+  } else if(display.textContent[0] !== '-'){
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "visible";
+    }, 50);
+    setTimeout(function testing() {
+      // textPara.remove();
+      // form.style.visibility = "visible";
+      message.style.visibility = "hidden";
+    }, 2000);
+  } else if(display.textContent[0] == '-' && display.textContent.length > 2 && arr.length == 1){
+    let slicedValues = display.textContent.slice(1)
+    console.log(slicedValues)
+    let displayValue = Number(slicedValues)
+    console.log('checking')
+    console.log(display.textContent[1])
+    display.textContent = slicedValues
+    let length = arr.length
+    console.log(length)
+    arr.splice(length - 1, 1, displayValue)
+    console.log(arr)
+  } 
+else if(display.textContent[0] == '-' && display.textContent.length > 2 && arr.length > 1){
+  let slicedValues = display.textContent.slice(1)
+  console.log(slicedValues)
+  let displayValue = Number(slicedValues)
+  console.log('checking')
+  console.log(display.textContent[1])
+  display.textContent = slicedValues
+  let length = arr.length
+  console.log(length)
+  arr.splice(length - 1, 1, displayValue)
+  console.log(arr)
+}
+});
 
 decimal.addEventListener("click", function () {});
 console.log(display.textContent.length);
 /*
 not done
-1. percentage block code just doesn't seem to be pushing or splicing
-ask gpt for the reason
 
-2. when you click an operator more than ones it can't be used and 
-therefore displays NaN. Fix this
-
-3. i need you to reduce the code. Too many repeated codes. The 
+1. i need you to reduce the code. Too many repeated codes. The 
 clicks i think can be reduced to just one and the keydown should
 also be reduced to only one 
 
-4. keydown for the signs 
+2. keydown for the signs 
 
-5. error message when you input what can't be solved
+3. error message when you input what can't be solved
 
-6. make sure a sign can be clicked only ones
+4. decimal seems to be giving me a shit load of problems
 
-7. sign and then decimal e.g /. decimal seems to be giving me a shit load of problems
+5. make the +/- functional
 
-8. make the +/- functional
+6. make the display for equal to not be more than 9
 
-9. make the display for equal to not be more than 9
+
+
 done
 1. you working on percentage as it is not pushing to arr when it is clicked
 maybe it is because i need to be connected to internet to refresh the page properly
@@ -1529,11 +1636,32 @@ e.g ['0', '1', '-', '2'] gives -2 (fixed)
 5. this plus too dey give me wahala. Now 2 + 3 = 5 + 2 is giving 
 me 52 instead of 7(fixed by doing this let result = Number(arr[0]);)
 
+6. when you click an operator more than ones it can't be used and 
+therefore displays NaN. Fix this
+
+7. make sure a sign can be clicked only ones
+
+8. percentage block code just doesn't seem to be pushing or splicing
+ask gpt for the reason
+(seems to already be working. When clicked it is shown in the 
+  array when something else is clicked)
 
 
-
-currently figuring out signs simultaneously been together
-3 * 2 * * 2 is changing to 3, 2 * * 2
+currently figuring out + / -
+- is working but removing the - is partially working
+below is the code i last typed
+ else if(display.textContent[0] == "-" && arr.length == 1){
+    console.log('e work?')
+    let newArr = [];
+    newArr.push(...arr);
+    arr = [];
+    let string = newArr.toString();
+    arr.push(string[1]);
+    display.textContent = string[1]
+  } 
+  walks for just when the lenght of arr is 1.
+  Below doesn't work
+  9 + -2 gives [9, +, NAN]
 
 
 

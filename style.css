@@ -1,109 +1,119 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .container {
-    background-color: hsl(0, 0%, 0%);
-    height: 570px;
-    width: 298px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 30px;
+  background-color: hsl(0, 0%, 0%);
+  height: 570px;
+  width: 298px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 30px;
 }
 
 .top {
-   
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    
-   
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
 
 .time {
-    flex: 1;
-    margin-left: 15px;
-    margin-top: -7px;
-    font-size: 15px;
+  flex: 1;
+  margin-left: 15px;
+  margin-top: -7px;
+  font-size: 15px;
 }
 
 .top_right {
-    display: flex;
-    margin-right: 15px;
-    gap: 10px;
-    margin-top: -10px;
-    
+  display: flex;
+  margin-right: 15px;
+  gap: 10px;
+  margin-top: -10px;
 }
 
-.fa-signal{
-    font-size: 8px;
-    margin-right: -6px;
+.fa-signal {
+  font-size: 8px;
+  margin-right: -6px;
 }
 
 .fa-battery-full {
-font-size: 15px;
-margin-top: 3px;
+  font-size: 15px;
+  margin-top: 3px;
 }
 
 .lte {
-    font-size: 12px;
-    margin-top: 4px;
-    margin-right: -6px;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-right: -6px;
 }
 
 .buttons_container {
-    display: flex;
-    /* background-color: green; */
-    margin-top: 40px;
+  display: flex;
+  /* background-color: green; */
+  margin-top: 40px;
 }
 
-
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .display_screen {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    top: 50px;
-    right: 4px;
-    
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: 50px;
+  right: 4px;
+  /* background-color: orange; */
+  margin-left: 10px;
+  /* color: green; */
+  
+}
+
+.message, .message2 {
+  visibility: hidden;
+  font-size: 1.4rem;
+  /* background-color: green; */
+  position: absolute;
+  top: 100px;
+  left: 102px;
 }
 
 .btn {
-    background-color: #2E2E2E;
-    padding: 20px;
-    border-radius: 40%;
-    text-align: center;
-    margin-right: 8px;
-    margin-left: 6px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size:15px;
-    cursor: pointer;
-    box-shadow: 1px 1px 2px 1px gray;
+  background-color: #2e2e2e;
+  padding: 20px;
+  border-radius: 40%;
+  text-align: center;
+  margin-right: 8px;
+  margin-left: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px 1px gray;
 }
 
 .btn:active {
-  
-    transform: scale(0.97);
-  }
+  transform: scale(0.97);
+}
 
-.multiply, .divide, .addition, .subtract, .equal, .percentage {
-    width: 61px;
-    cursor: pointer;
-    box-shadow: none;
+.multiply,
+.divide,
+.addition,
+.subtract,
+.equal,
+.percentage {
+  width: 61px;
+  cursor: pointer;
+  box-shadow: none;
 }
 
 .num0 {
@@ -111,39 +121,54 @@ body {
   width: 134px;
   border-radius: 100px;
   margin-top: 0px;
-  
 }
 
 .display_screen {
-    margin-top: 33px;
-    font-size: 60px;
-    margin-right: 5px;
+  margin-top: 33px;
+  font-size: 60px;
+  margin-right: 5px;
 }
 
-.fas.fa-plus, .fas.fa-minus, .fas.fa-xmark, .fas.fa-divide,
-.fas.fa-equals, .fas.fa-percent {
-    font-size: 15px;
-  }
+.fas.fa-plus,
+.fas.fa-minus,
+.fas.fa-xmark,
+.fas.fa-divide,
+.fas.fa-equals,
+.fas.fa-percent {
+  font-size: 15px;
+}
 
-  .btn.num8, .btn.num5, .btn.num2, .btn.num7, .btn.num4, .btn.num1, .btn.decimal{
-   width: 61px;
-   font-family: Arial, Helvetica, sans-serif;
-  }
+.btn.num8,
+.btn.num5,
+.btn.num2,
+.btn.num7,
+.btn.num4,
+.btn.num1,
+.btn.decimal {
+  width: 61px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  .divide,.multiply, .subtract, .addition, .equal {
-    background-color: #EE9406;
-  }
- .ac, .plus_minus, .percentage {
-    background-color: #AEAEAE;
-    color: black;
-    font-weight: 600;
-   
-    box-shadow: 1px 1px 2px 1px ;
- }
+.divide,
+.multiply,
+.subtract,
+.addition,
+.equal {
+  background-color: #ee9406;
+}
+.ac,
+.plus_minus,
+.percentage {
+  background-color: #aeaeae;
+  color: black;
+  font-weight: 600;
 
- .line {
-    width: 170px;
-    height: 3px;
-    background-color: green;
-    margin: auto;
- }
+  box-shadow: 1px 1px 2px 1px;
+}
+
+.line {
+  width: 170px;
+  height: 3px;
+  background-color: green;
+  margin: auto;
+}
