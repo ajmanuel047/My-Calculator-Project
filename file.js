@@ -69,8 +69,11 @@ function operator() {
 
 /* Keydown start */
 document.addEventListener("keydown", function (e) {
-  if (e.keyCode == 48) {
+  if (e.key == '0') {
     if (display.textContent.length < 9) {
+      if (arr.length == 1 && display.textContent == '0') {
+        arr = [];
+      }
       if (
         display.textContent == 0 ||
         display.textContent == "+" ||
@@ -80,7 +83,7 @@ document.addEventListener("keydown", function (e) {
       ) {
         display.textContent = 0;
 
-        arr.push(0);
+        00
       }
       //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
       //        display.textContent = -3
@@ -125,7 +128,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode === 49) {
+  } else if (e.key == '1') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -181,7 +184,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 50) {
+  } else if (e.key == '2') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -237,7 +240,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 51) {
+  } else if (e.key == '3') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -293,7 +296,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 52) {
+  } else if (e.key == '4') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -349,7 +352,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 53) {
+  } else if (e.key == '5') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -405,7 +408,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 54) {
+  } else if (e.key == '6') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -461,7 +464,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 55) {
+  } else if (e.key == '7') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -517,7 +520,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 56) {
+  } else if (e.key == '8') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -573,7 +576,7 @@ document.addEventListener("keydown", function (e) {
         message.style.visibility = "hidden";
       }, 2000);
     }
-  } else if (e.keyCode == 57) {
+  } else if (e.key == '9') {
     if (display.textContent.length < 9) {
       if (
         display.textContent == 0 ||
@@ -1494,15 +1497,13 @@ percentage.addEventListener("click", function () {
 
 plusMinus.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    
     if (
       display.textContent == "*" ||
       display.textContent == "+" ||
       display.textContent == "-" ||
       display.textContent == "/"
     ) {
-    } 
-    else if (display.textContent[0] == "-" && arr.length == 1) {
+    } else if (display.textContent[0] == "-" && arr.length == 1) {
       console.log("e work?");
       let newArr = [];
       newArr.push(...arr);
@@ -1510,20 +1511,22 @@ plusMinus.addEventListener("click", function () {
       let string = newArr.toString();
       arr.push(display.textContent.slice(1));
       display.textContent = display.textContent.slice(1);
-    } 
-     else if(display.textContent[0] == '-' && arr.length > 1 && display.textContent.length < 2){
-      let slicedValues = display.textContent.slice(1)
-      console.log(slicedValues)
-      let displayValue = Number(slicedValues)
-      console.log('checking')
-      console.log(display.textContent[1])
-      display.textContent = slicedValues
-      let length = arr.length
-      console.log(length)
-      arr.splice(length - 1, 1, displayValue)
-      console.log(arr)
-    }
-    else if(display.textContent == '0'){
+    } else if (
+      display.textContent[0] == "-" &&
+      arr.length > 1 &&
+      display.textContent.length < 2
+    ) {
+      let slicedValues = display.textContent.slice(1);
+      console.log(slicedValues);
+      let displayValue = Number(slicedValues);
+      console.log("checking");
+      console.log(display.textContent[1]);
+      display.textContent = slicedValues;
+      let length = arr.length;
+      console.log(length);
+      arr.splice(length - 1, 1, displayValue);
+      console.log(arr);
+    } else if (display.textContent == "0") {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
@@ -1534,29 +1537,26 @@ plusMinus.addEventListener("click", function () {
         // form.style.visibility = "visible";
         message2.style.visibility = "hidden";
       }, 2000);
-    }
-    else if(display.textContent[0] !== '-') {
+    } else if (display.textContent[0] !== "-") {
       display.textContent = "-" + display.textContent;
       arr.push(Number(display.textContent));
-  
       let index = arr.length - 1;
       console.log(index);
       arr.splice(index - 1, 1);
       console.log(arr);
+    } else if (display.textContent[0] == "-" && arr.length > 1) {
+      let slicedValues = display.textContent.slice(1);
+      console.log(slicedValues);
+      let displayValue = Number(slicedValues);
+      console.log("checking");
+      console.log(display.textContent[1]);
+      display.textContent = slicedValues;
+      let length = arr.length;
+      console.log(length);
+      arr.splice(length - 1, 1, displayValue);
+      console.log(arr);
     }
-    else if(display.textContent[0] == '-' && arr.length > 1) {
-      let slicedValues = display.textContent.slice(1)
-      console.log(slicedValues)
-      let displayValue = Number(slicedValues)
-      console.log('checking')
-      console.log(display.textContent[1])
-      display.textContent = slicedValues
-      let length = arr.length
-      console.log(length)
-      arr.splice(length - 1, 1, displayValue)
-      console.log(arr)
-    }
-  } else if(display.textContent[0] !== '-'){
+  } else if (display.textContent[0] !== "-") {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
@@ -1567,30 +1567,37 @@ plusMinus.addEventListener("click", function () {
       // form.style.visibility = "visible";
       message.style.visibility = "hidden";
     }, 2000);
-  } else if(display.textContent[0] == '-' && display.textContent.length > 2 && arr.length == 1){
-    let slicedValues = display.textContent.slice(1)
-    console.log(slicedValues)
-    let displayValue = Number(slicedValues)
-    console.log('checking')
-    console.log(display.textContent[1])
-    display.textContent = slicedValues
-    let length = arr.length
-    console.log(length)
-    arr.splice(length - 1, 1, displayValue)
-    console.log(arr)
-  } 
-else if(display.textContent[0] == '-' && display.textContent.length > 2 && arr.length > 1){
-  let slicedValues = display.textContent.slice(1)
-  console.log(slicedValues)
-  let displayValue = Number(slicedValues)
-  console.log('checking')
-  console.log(display.textContent[1])
-  display.textContent = slicedValues
-  let length = arr.length
-  console.log(length)
-  arr.splice(length - 1, 1, displayValue)
-  console.log(arr)
-}
+  } else if (
+    display.textContent[0] == "-" &&
+    display.textContent.length > 2 &&
+    arr.length == 1
+  ) {
+    let slicedValues = display.textContent.slice(1);
+    console.log(slicedValues);
+    let displayValue = Number(slicedValues);
+    console.log("checking");
+    console.log(display.textContent[1]);
+    display.textContent = slicedValues;
+    let length = arr.length;
+    console.log(length);
+    arr.splice(length - 1, 1, displayValue);
+    console.log(arr);
+  } else if (
+    display.textContent[0] == "-" &&
+    display.textContent.length > 2 &&
+    arr.length > 1
+  ) {
+    let slicedValues = display.textContent.slice(1);
+    console.log(slicedValues);
+    let displayValue = Number(slicedValues);
+    console.log("checking");
+    console.log(display.textContent[1]);
+    display.textContent = slicedValues;
+    let length = arr.length;
+    console.log(length);
+    arr.splice(length - 1, 1, displayValue);
+    console.log(arr);
+  }
 });
 
 decimal.addEventListener("click", function () {});
@@ -1608,9 +1615,7 @@ also be reduced to only one
 
 4. decimal seems to be giving me a shit load of problems
 
-5. make the +/- functional
-
-6. make the display for equal to not be more than 9
+5. make the display for equal to not be more than 9
 
 
 
@@ -1645,6 +1650,8 @@ therefore displays NaN. Fix this
 ask gpt for the reason
 (seems to already be working. When clicked it is shown in the 
   array when something else is clicked)
+
+9. make the +/- functional
 
 
 currently figuring out + / -
