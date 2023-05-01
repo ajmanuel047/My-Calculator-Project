@@ -48,79 +48,42 @@ let arr = [];
 // };
 
 display.style.fontSize = "3.5rem";
-function operator() {
-  let result = Number(arr[0]);
-  for (let i = 0; i < arr.length; i++) {
-    let value = Number(arr[i]);
-    if (arr[i] == "+") {
-      result += arr[i + 1];
-    } else if (arr[i] == "-") {
-      result -= arr[i + 1];
-    } else if (arr[i] == "*") {
-      result *= arr[i + 1];
-    } else if (arr[i] == "/") {
-      result /= arr[i + 1];
-    } else if (Number.isInteger(value) == false && arr[i + 1] == "+") {
-      result = value;
-    }
-  }
-  return result;
-}
 
 /* Keydown start for number buttons*/
 document.addEventListener("keydown", function (e) {
   if (e.key == "0") {
     if (display.textContent.length < 9) {
-      if (arr.length == 1 && display.textContent == "0") {
-        arr = [];
-      }
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
+      if (display.textContent == "0." && clickCount == 0) {
+        display.textContent += 0;
+        arr.splice(arr.length - 1, 1);
+        arr.push(Number(display.textContent));
+        count = 0;
+        console.log("normal");
+      } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+        display.textContent += 0;
+        let result = Number(arr[arr.length - 1] + "0");
+        arr.pop();
+        arr.push(result);
+        clickCount = 0;
+        console.log("if 1");
+      } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
         display.textContent = 0;
-
-        00;
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
         arr.push(0);
+        console.log("if 2");
+        clickCount = 0;
+      } else if (clickCount !== 0) {
         display.textContent = 0;
-      } else if (clickCount === 2) {
-        display.textContent += 0;
-        let result = Number(arr[arr.length - 1] + "0");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 0;
-        let result = Number(arr[arr.length - 1] + "0");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
-      } else {
-        display.textContent += 0;
-        let result = Number(arr[arr.length - 1] + "0");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        arr = [];
+        arr.push(display.textContent);
+        clickCount++;
+        console.log("refresh");
       }
-      console.log(display.textContent);
-
-      console.log(arr);
     } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
         message.style.visibility = "visible";
+        message2.style.visibility = "hidden";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
@@ -130,283 +93,228 @@ document.addEventListener("keydown", function (e) {
     }
   } else if (e.key == "1") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 1;
-
-        arr.push(1);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(1);
-        display.textContent = 1;
-      } else if (clickCount === 2) {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 1;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 1;
+          let result = Number(arr[arr.length - 1] + "1");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 1;
+          arr.push(1);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 1;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 1;
-        let result = Number(arr[arr.length - 1] + "1");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "2") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 2;
-
-        arr.push(2);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(2);
-        display.textContent = 2;
-      } else if (clickCount === 2) {
-        display.textContent += 2;
-        let result = Number(arr[arr.length - 1] + "2");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 2;
-        let result = Number(arr[arr.length - 1] + "2");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 2;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 2;
+          let result = Number(arr[arr.length - 1] + "2");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 2;
+          arr.push(2);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 2;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 2;
-        let result = Number(arr[arr.length - 1] + "2");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "3") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 3;
-
-        arr.push(3);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(3);
-        display.textContent = 3;
-      } else if (clickCount === 2) {
-        display.textContent += 3;
-        let result = Number(arr[arr.length - 1] + "3");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 3;
-        let result = Number(arr[arr.length - 1] + "3");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 3;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 3;
+          let result = Number(arr[arr.length - 1] + "3");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 3;
+          arr.push(3);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 3;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 3;
-        let result = Number(arr[arr.length - 1] + "3");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "4") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 4;
-
-        arr.push(4);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(4);
-        display.textContent = 4;
-      } else if (clickCount === 2) {
-        display.textContent += 4;
-        let result = Number(arr[arr.length - 1] + "4");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 4;
-        let result = Number(arr[arr.length - 1] + "4");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 4;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 4;
+          let result = Number(arr[arr.length - 1] + "4");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 4;
+          arr.push(4);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 4;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 4;
-        let result = Number(arr[arr.length - 1] + "4");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "5") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 5;
-
-        arr.push(5);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(5);
-        display.textContent = 5;
-      } else if (clickCount === 2) {
-        display.textContent += 5;
-        let result = Number(arr[arr.length - 1] + "5");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 5;
-        let result = Number(arr[arr.length - 1] + "5");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 5;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 5;
+          let result = Number(arr[arr.length - 1] + "5");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 5;
+          arr.push(5);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 5;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 5;
-        let result = Number(arr[arr.length - 1] + "5");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "6") {
     if (display.textContent.length < 9) {
@@ -420,12 +328,21 @@ document.addEventListener("keydown", function (e) {
         display.textContent = 6;
 
         arr.push(6);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+      } else if (
+        arr.length == 1 &&
+        arr.toString().charAt(arr.toString().length - 1) == "."
+      ) {
+        let newArr = [];
+        newArr.push(...arr);
+        arr = [];
+        let string = newArr.toString() + "6";
+        arr.push(string);
+        display.textContent = string;
+      } else if (
+        typeof arr[0] == "string" &&
+        arr.length == 1 &&
+        arr[0] !== "-"
+      ) {
         arr = [];
         arr.push(6);
         display.textContent = 6;
@@ -449,14 +366,12 @@ document.addEventListener("keydown", function (e) {
         arr.push(result);
         console.log("yessss");
       }
-      console.log(display.textContent);
-
-      console.log(arr);
     } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
         message.style.visibility = "visible";
+        message2.style.visibility = "hidden";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
@@ -466,109 +381,82 @@ document.addEventListener("keydown", function (e) {
     }
   } else if (e.key == "7") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
-        display.textContent = 7;
-
-        arr.push(7);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-        arr = [];
-        arr.push(7);
-        display.textContent = 7;
-      } else if (clickCount === 2) {
-        display.textContent += 7;
-        let result = Number(arr[arr.length - 1] + "7");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 7;
-        let result = Number(arr[arr.length - 1] + "7");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
+      if (display.textContent.length < 9) {
+        if (display.textContent == "0." && clickCount == 0) {
+          display.textContent += 7;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          count = 0;
+          console.log("normal");
+        } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+          display.textContent += 7;
+          let result = Number(arr[arr.length - 1] + "7");
+          arr.pop();
+          arr.push(result);
+          clickCount = 0;
+          console.log("if 1");
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount == 0
+        ) {
+          display.textContent = 7;
+          arr.push(7);
+          console.log("if 2");
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = 7;
+          arr = [];
+          arr.push(display.textContent);
+          clickCount++;
+          console.log("refresh");
+        }
       } else {
-        display.textContent += 7;
-        let result = Number(arr[arr.length - 1] + "7");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(function testing() {
+          // textPara.remove();
+          // form.style.visibility = "visible";
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-      console.log(display.textContent);
-
-      console.log(arr);
-    } else {
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "visible";
-      }, 50);
-      setTimeout(function testing() {
-        // textPara.remove();
-        // form.style.visibility = "visible";
-        message.style.visibility = "hidden";
-      }, 2000);
     }
   } else if (e.key == "8") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
+      if (display.textContent == "0." && clickCount == 0) {
+        display.textContent += 8;
+        arr.splice(arr.length - 1, 1);
+        arr.push(Number(display.textContent));
+        count = 0;
+        console.log("normal");
+      } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+        display.textContent += 8;
+        let result = Number(arr[arr.length - 1] + "8");
+        arr.pop();
+        arr.push(result);
+        clickCount = 0;
+        console.log("if 1");
+      } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
         display.textContent = 8;
-
         arr.push(8);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+        console.log("if 2");
+        clickCount = 0;
+      } else if (clickCount !== 0) {
+        display.textContent = 8;
         arr = [];
-        arr.push(8);
-        display.textContent = 8;
-      } else if (clickCount === 2) {
-        display.textContent += 8;
-        let result = Number(arr[arr.length - 1] + "8");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 8;
-        let result = Number(arr[arr.length - 1] + "8");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
-      } else {
-        display.textContent += 8;
-        let result = Number(arr[arr.length - 1] + "8");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        arr.push(display.textContent);
+        clickCount++;
+        console.log("refresh");
       }
-      console.log(display.textContent);
-
-      console.log(arr);
     } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
         message.style.visibility = "visible";
+        message2.style.visibility = "hidden";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
@@ -578,53 +466,37 @@ document.addEventListener("keydown", function (e) {
     }
   } else if (e.key == "9") {
     if (display.textContent.length < 9) {
-      if (
-        display.textContent == 0 ||
-        display.textContent == "+" ||
-        display.textContent == "*" ||
-        display.textContent == "-" ||
-        display.textContent == "/"
-      ) {
+      if (display.textContent == "0." && clickCount == 0) {
+        display.textContent += 9;
+        arr.splice(arr.length - 1, 1);
+        arr.push(Number(display.textContent));
+        count = 0;
+        console.log("normal");
+      } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+        display.textContent += 9;
+        let result = Number(arr[arr.length - 1] + "9");
+        arr.pop();
+        arr.push(result);
+        clickCount = 0;
+        console.log("if 1");
+      } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
         display.textContent = 9;
-
         arr.push(9);
-      }
-      //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-      //        display.textContent = -3
-      //        arr.push(-3)
-      //     }
-      else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
+        console.log("if 2");
+        clickCount = 0;
+      } else if (clickCount !== 0) {
+        display.textContent = 9;
         arr = [];
-        arr.push(9);
-        display.textContent = 9;
-      } else if (clickCount === 2) {
-        display.textContent += 9;
-        let result = Number(arr[arr.length - 1] + "9");
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (display.textContent.length > 2) {
-        display.textContent += 9;
-        let result = Number(arr[arr.length - 1] + "9");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
-        clickCount = 0;
-      } else {
-        display.textContent += 9;
-        let result = Number(arr[arr.length - 1] + "9");
-        arr.pop();
-        arr.push(result);
-        console.log("yessss");
+        arr.push(display.textContent);
+        clickCount++;
+        console.log("refresh");
       }
-      console.log(display.textContent);
-
-      console.log(arr);
     } else {
       setTimeout(function testing() {
         // textPara.remove();
         // form.style.visibility = "visible";
         message.style.visibility = "visible";
+        message2.style.visibility = "hidden";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
@@ -744,10 +616,25 @@ document.addEventListener("keydown", function (e) {
     console.log(display.textContent);
     console.log(arr);
   } else if (e.key === "=" || e.key === "Enter") {
-    display.textContent = operator(arr);
-    arr = [];
-    arr.push(display.textContent);
-    console.log(display.textContent);
+    let result = operator(arr);
+    console.log("result");
+    // console.log(typeof result);
+    if (result.toString().length <= 9) {
+      display.textContent = result;
+      console.log(result);
+      arr = [];
+      arr.push(result.toString());
+    } else if (result.toString().length > 9) {
+      let exponentialForm = result.toExponential(2);
+      console.log(result);
+      arr = [];
+      display.textContent = exponentialForm;
+      arr.push(result.toString());
+    } else if (arr.length == 0) {
+      console.log("e work");
+      display.textContent = 0;
+      arr = [];
+    }
     console.log(arr);
   } else if (e.key === "Escape") {
     display.textContent = 0;
@@ -767,60 +654,38 @@ document.addEventListener("keydown", function (e) {
 });
 /* keydown end for sign buttons*/
 zero.addEventListener("click", function () {
-  clickCount++;
   if (display.textContent.length < 9) {
-    if (arr.length == 1 && display.textContent == 0) {
-      arr = [];
-    }
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 0;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+      display.textContent += 0;
+      let result = Number(arr[arr.length - 1] + "0");
+      arr.pop();
+      arr.push(result);
+      clickCount = 0;
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
       display.textContent = 0;
-      arr = [];
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "0";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
       arr.push(0);
+      console.log("if 2");
+      clickCount = 0;
+    } else if (clickCount !== 0) {
       display.textContent = 0;
-    } else if (clickCount === 2) {
-      display.textContent += 0;
-      let result = Number(arr[arr.length - 1] + "0");
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 0;
-      let result = Number(arr[arr.length - 1] + "0");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
-      clickCount = 0;
-    } else {
-      display.textContent += 0;
-      let result = Number(arr[arr.length - 1] + "0");
-      arr.pop();
-      arr.push(result);
-
-      console.log("yessss");
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -828,68 +693,46 @@ zero.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
-
   console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
-  num1 = Number(display.textContent);
+
   console.log(arr);
 });
 
-one.addEventListener("click", function (e) {
-  clickCount++;
+one.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 1;
-
-      arr.push(1);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "1";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(1);
-      display.textContent = 1;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
       display.textContent += 1;
-
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
+      display.textContent += 1;
       let result = Number(arr[arr.length - 1] + "1");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 1;
-      let result = Number(arr[arr.length - 1] + "1");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 1;
+      arr.push(1);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 1;
-      let result = Number(arr[arr.length - 1] + "1");
-      arr.pop();
-      arr.push(result);
-
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 1;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -897,11 +740,10 @@ one.addEventListener("click", function (e) {
       message.style.visibility = "hidden";
     }, 2000);
   }
-
   console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
-  num1 = Number(display.textContent);
+
   console.log(arr);
 });
 
@@ -913,55 +755,37 @@ document.addEventListener("click", function (event) {
 
 two.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 2;
-
-      arr.push(2);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "2";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(2);
-      display.textContent = 2;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 2;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 2;
       let result = Number(arr[arr.length - 1] + "2");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 2;
-      let result = Number(arr[arr.length - 1] + "2");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 2;
+      arr.push(2);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 2;
-      let result = Number(arr[arr.length - 1] + "2");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 2;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -969,6 +793,7 @@ two.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -977,55 +802,37 @@ two.addEventListener("click", function () {
 
 three.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 3;
-
-      arr.push(3);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "3";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(3);
-      display.textContent = 3;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 3;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 3;
       let result = Number(arr[arr.length - 1] + "3");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 3;
-      let result = Number(arr[arr.length - 1] + "3");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 3;
+      arr.push(3);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 3;
-      let result = Number(arr[arr.length - 1] + "3");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 3;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1033,6 +840,7 @@ three.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1041,55 +849,37 @@ three.addEventListener("click", function () {
 
 four.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 4;
-
-      arr.push(4);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "4";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(4);
-      display.textContent = 4;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 4;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 4;
       let result = Number(arr[arr.length - 1] + "4");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 4;
-      let result = Number(arr[arr.length - 1] + "4");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 4;
+      arr.push(4);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 4;
-      let result = Number(arr[arr.length - 1] + "4");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 4;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1097,6 +887,7 @@ four.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1105,55 +896,37 @@ four.addEventListener("click", function () {
 
 five.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 5;
-
-      arr.push(5);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "5";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(5);
-      display.textContent = 5;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 5;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 5;
       let result = Number(arr[arr.length - 1] + "5");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 5;
-      let result = Number(arr[arr.length - 1] + "5");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 5;
+      arr.push(5);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 5;
-      let result = Number(arr[arr.length - 1] + "5");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 5;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1161,6 +934,7 @@ five.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1169,55 +943,37 @@ five.addEventListener("click", function () {
 
 six.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 6;
-
-      arr.push(6);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "6";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(6);
-      display.textContent = 6;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 6;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 6;
       let result = Number(arr[arr.length - 1] + "6");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 6;
-      let result = Number(arr[arr.length - 1] + "6");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 6;
+      arr.push(6);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 6;
-      let result = Number(arr[arr.length - 1] + "6");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 6;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1225,6 +981,7 @@ six.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1233,55 +990,37 @@ six.addEventListener("click", function () {
 
 seven.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 7;
-
-      arr.push(7);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "7";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(7);
-      display.textContent = 7;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 7;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 7;
       let result = Number(arr[arr.length - 1] + "7");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 7;
-      let result = Number(arr[arr.length - 1] + "7");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 7;
+      arr.push(7);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 7;
-      let result = Number(arr[arr.length - 1] + "7");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 7;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1289,6 +1028,7 @@ seven.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1297,55 +1037,37 @@ seven.addEventListener("click", function () {
 
 eight.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 8;
-
-      arr.push(8);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "8";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(8);
-      display.textContent = 8;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 8;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 8;
       let result = Number(arr[arr.length - 1] + "8");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 8;
-      let result = Number(arr[arr.length - 1] + "8");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 8;
+      arr.push(8);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 8;
-      let result = Number(arr[arr.length - 1] + "8");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 8;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1353,6 +1075,7 @@ eight.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1361,55 +1084,37 @@ eight.addEventListener("click", function () {
 
 nine.addEventListener("click", function () {
   if (display.textContent.length < 9) {
-    if (
-      display.textContent == 0 ||
-      display.textContent == "+" ||
-      display.textContent == "*" ||
-      display.textContent == "-" ||
-      display.textContent == "/"
-    ) {
-      display.textContent = 9;
-
-      arr.push(9);
-    } else if (
-      arr.length == 1 &&
-      arr.toString().charAt(arr.toString().length - 1) == "."
-    ) {
-      let newArr = [];
-      newArr.push(...arr);
-      arr = [];
-      let string = newArr.toString() + "9";
-      arr.push(string);
-      display.textContent = string;
-    } else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(9);
-      display.textContent = 9;
-    } else if (clickCount === 2) {
+    if (display.textContent == "0." && clickCount == 0) {
+      display.textContent += 9;
+      arr.splice(arr.length - 1, 1);
+      arr.push(Number(display.textContent));
+      count = 0;
+      console.log("normal");
+    } else if (/[1-9]/.test(display.textContent) && clickCount == 0) {
       display.textContent += 9;
       let result = Number(arr[arr.length - 1] + "9");
       arr.pop();
       arr.push(result);
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += 9;
-      let result = Number(arr[arr.length - 1] + "9");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      console.log("if 1");
+    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount == 0) {
+      display.textContent = 9;
+      arr.push(9);
+      console.log("if 2");
       clickCount = 0;
-    } else {
-      display.textContent += 9;
-      let result = Number(arr[arr.length - 1] + "9");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+    } else if (clickCount !== 0) {
+      display.textContent = 9;
+      arr = [];
+      arr.push(display.textContent);
+      clickCount++;
+      console.log("refresh");
     }
   } else {
     setTimeout(function testing() {
       // textPara.remove();
       // form.style.visibility = "visible";
       message.style.visibility = "visible";
+      message2.style.visibility = "hidden";
     }, 50);
     setTimeout(function testing() {
       // textPara.remove();
@@ -1417,6 +1122,7 @@ nine.addEventListener("click", function () {
       message.style.visibility = "hidden";
     }, 2000);
   }
+  console.log(`length : ${display.textContent.length}`);
 
   console.log(display.textContent);
 
@@ -1424,47 +1130,15 @@ nine.addEventListener("click", function () {
 });
 
 decimal.addEventListener("click", function () {
-  if (display.textContent.length < 9) {
-    if (
-      display.textContent !== "+" ||
-      display.textContent !== "-" ||
-      display.textContent !== "/" ||
-      display.textContent !== "*"
-    ) {
-      let result = display.textContent + ".";
-      display.textContent = result;
-      let index = arr.indexOf(display.textContent);
-      arr.splice(index, 1, result);
-      // arr.push(result)
-    } else if (arr.length == 1) {
-    }
-    //    else if(display.textContent == '-' && arr.indexOf('-') > -1 && arr[arr.indexOf('-') - 2] == "*"){
-    //        display.textContent = -3
-    //        arr.push(-3)
-    //     }
-    else if (typeof arr[0] == "string" && arr.length == 1 && arr[0] !== "-") {
-      arr = [];
-      arr.push(".");
-      display.textContent = ".";
-    } else if (clickCount === 2) {
+  if (!display.textContent.includes(".")) {
+    if (/[0-9]/.test(display.textContent)) {
       display.textContent += ".";
-      let result = Number(arr[arr.length - 1] + ".");
-      arr.pop();
-      arr.push(result);
+      arr.splice(arr.length - 1, 1);
+      arr.push(display.textContent);
+      console.log("decimal");
       clickCount = 0;
-    } else if (display.textContent.length > 2) {
-      display.textContent += ".";
-      let result = Number(arr[arr.length - 1] + ".");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
-      clickCount = 0;
-    } else {
-      display.textContent += ".";
-      let result = Number(arr[arr.length - 1] + ".");
-      arr.pop();
-      arr.push(result);
-      console.log("yessss");
+      // let length = arr.length
+      console.log(arr);
     }
   }
 
@@ -1474,20 +1148,6 @@ decimal.addEventListener("click", function () {
 });
 
 divide.addEventListener("click", function () {
-  if (
-    display.textContent == "*" ||
-    display.textContent == "+" ||
-    display.textContent == "-" ||
-    display.textContent == "/"
-  ) {
-    console.log("what showed");
-    // let index = arr.indexOf(display.textContent);
-    // arr.splice(index, 1);
-    let index = arr.length - 1;
-    console.log(index);
-    arr.splice(index, 1);
-    console.log(arr);
-  }
   if (arr.length !== 0) {
     display.textContent = "/";
     arr.push("/");
@@ -1502,20 +1162,6 @@ divide.addEventListener("click", function () {
 });
 
 multiply.addEventListener("click", function () {
-  if (
-    display.textContent == "*" ||
-    display.textContent == "+" ||
-    display.textContent == "-" ||
-    display.textContent == "/"
-  ) {
-    console.log("what showed");
-    // let index = arr.indexOf(display.textContent);
-    // arr.splice(index, 1);
-    let index = arr.length - 1;
-    console.log(index);
-    arr.splice(index, 1);
-    console.log(arr);
-  }
   if (arr.length !== 0) {
     display.textContent = "*";
     arr.push("*");
@@ -1530,27 +1176,12 @@ multiply.addEventListener("click", function () {
 });
 
 addButton.addEventListener("click", function () {
-  if (
-    display.textContent == "*" ||
-    display.textContent == "+" ||
-    display.textContent == "-" ||
-    display.textContent == "/"
-  ) {
-    console.log("what showed");
-    // let index = arr.indexOf(display.textContent);
-    // arr.splice(index, 1);
-    let index = arr.length - 1;
-    console.log(index);
-    arr.splice(index, 1);
-    console.log(arr);
-  }
   if (arr.length !== 0) {
     display.textContent = "+";
     arr.push("+");
+    clickCount = 0;
     console.log(display.textContent);
     console.log(arr);
-  } else {
-    arr = [];
   }
 
   console.log(display.textContent);
@@ -1558,20 +1189,6 @@ addButton.addEventListener("click", function () {
 });
 
 subtract.addEventListener("click", function () {
-  if (
-    display.textContent == "*" ||
-    display.textContent == "+" ||
-    display.textContent == "-" ||
-    display.textContent == "/"
-  ) {
-    console.log("what showed");
-    // let index = arr.indexOf(display.textContent);
-    // arr.splice(index, 1);
-    let index = arr.length - 1;
-    console.log(index);
-    arr.splice(index, 1);
-    console.log(arr);
-  }
   if (arr.length !== 0) {
     display.textContent = "-";
     arr.push("-");
@@ -1591,20 +1208,6 @@ subtract.addEventListener("click", function () {
 //   console.log(display.textContent);
 //   console.log(arr);
 // });
-
-equal.addEventListener("click", function () {
-  display.textContent = operator(arr);
-  arr = [];
-  arr.push(display.textContent);
-  console.log(display.textContent);
-  console.log(arr);
-});
-
-clearButton.addEventListener("click", function () {
-  display.textContent = 0;
-  arr = [];
-  console.clear();
-});
 
 percentage.addEventListener("click", function () {
   // let result = arr[3] / 100
@@ -1657,6 +1260,7 @@ plusMinus.addEventListener("click", function () {
         // textPara.remove();
         // form.style.visibility = "visible";
         message2.style.visibility = "visible";
+        message.style.visibility = "hidden";
       }, 50);
       setTimeout(function testing() {
         // textPara.remove();
@@ -1726,29 +1330,109 @@ plusMinus.addEventListener("click", function () {
   }
 });
 
-decimal.addEventListener("click", function () {});
+function operator() {
+  let result = Number(arr[0]);
+  for (let i = 0; i < arr.length; i++) {
+    let value = Number(arr[i]);
+    if (arr[i] == "+") {
+      result += arr[i + 1];
+    } else if (arr[i] == "-") {
+      result -= arr[i + 1];
+    } else if (arr[i] == "*") {
+      result *= arr[i + 1];
+    } else if (arr[i] == "/") {
+      result /= arr[i + 1];
+    }
+    // else if (Number.isInteger(value) == false && arr[i + 1] == "+") {
+    //   result = value;
+    // }
+  }
+  return result;
+}
+
+equal.addEventListener("click", function () {
+  result = operator(arr);
+  if (!arr.length == 0) {
+    console.log(result.toFixed(1));
+    if (result.toString().length > 9) {
+      display.textContent = result.toFixed(2);
+      arr = [];
+      arr.push(display.textContent);
+      console.log("work");
+      clickCount++;
+    } else if (
+      arr[arr.length - 1] == "+" ||
+      arr[arr.length - 1] == "-" ||
+      arr[arr.length - 1] == "/" ||
+      arr[arr.length - 1] == "*"
+    ) {
+      setTimeout(function testing() {
+        message2.style.visibility = "visible";
+      }, 50);
+      setTimeout(function testing() {
+        message2.style.visibility = "hidden";
+      }, 2000);
+    } else {
+      display.textContent = result;
+      arr = [];
+      arr.push(display.textContent);
+
+      clickCount++;
+    }
+  }
+  console.log(display.textContent);
+  console.log(arr);
+  console.log(`clickCount: ${clickCount}`);
+});
+
+clearButton.addEventListener("click", function () {
+  display.textContent = 0;
+  arr = [];
+  array = [];
+  clickCount = 0;
+  console.clear();
+  console.log("e clear?");
+  console.log(arr);
+});
+
+// decimal.addEventListener("click", function () {});
 console.log(display.textContent.length);
 /*
 not done
 
 1. i need you to reduce the code. Too many repeated codes. The 
 clicks i think can be reduced to just one and the keydown should
-also be reduced to only one 
+also be reduced to only one. This code can be alot smaller than this
+You need to reduce the code as much as possible. 
 
-2. keydown for the signs 
+2. decimal seems to be giving me a shit load of problems
+One of the issues i am having with decimals is that clicking
+decimal first is just refusing to work (fixed)
+2 + 2.3 works 
+2.3 + 2 works
+this does not work 3 + 4 + 2.3 * 3.4 + 4(fixed)
++. fix that so it doesn't do that for all the symbols(fixed)
+fix this 1.1.1.142 (fixed)
+fix this 1 + 0.2(fixed)
+1.1 and then 1 going to 1 instead of 1.11(copy and paste to the other numbers)
+3. round up 0.011000000000000001 got this by doing percentage of a
+fraction in this case is did 1.1%
+0.1 not working(fixed)
+clicking point first and then clicking a number doesn't work(fixed)
+after making everything work here you copy and paste for all buttons
+and all keyboard keys
 
-3. error message when you input what can't be solved
-
-4. decimal seems to be giving me a shit load of problems
-
-5. make the display for equal to not be more than 9
-
-
+4. empty equal to giving NaN(fixed)
+5. 1 + equal to gives NaN
 
 done
 1. you working on percentage as it is not pushing to arr when it is clicked
 maybe it is because i need to be connected to internet to refresh the page properly
 just confirm it.(done)
+a. Each of the numbers have their own keys. I think we can use this
+to reduce the code in terms of accessing the keys through the keyboard
+
+
 
 2. Display screen must not be more than 9 use display.textContent.length
 make the number buttons clickable through the keyboard(
@@ -1779,6 +1463,11 @@ ask gpt for the reason
 
 9. make the +/- functional
 
+10. keydown for the signs 
+11. make the display for equal to not be more than 9
+
+12. error message when you input what can't be solved
+
 
 currently figuring out + / -
 - is working but removing the - is partially working
@@ -1801,6 +1490,9 @@ below is the code i last typed
 
 
 9 / 3 * *** 2 works fine
+
+
+currently working on +. before going to 0.1
 
 
 
