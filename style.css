@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-h1, h3 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+h1,
+h3 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 h3 {
@@ -63,11 +64,10 @@ h3 {
 .buttons_container {
   display: flex;
   /* background-color: green; */
-    margin: auto;
-    margin-right: -3px;
-    position: relative;
-    top: -10px;
-    
+  margin: auto;
+  margin-right: -3px;
+  position: relative;
+  top: -10px;
 }
 
 .display_screen {
@@ -76,13 +76,13 @@ h3 {
   position: relative;
   top: -5px;
   right: 4px;
-  /* background-color: orange; */
- 
-  margin-bottom: -10px;
-  font-size: 60px;
-  margin-right:2px;
-  /* color: green; */
   
+  /* background-color: orange; */
+
+  margin-bottom: -10px;
+  font-size: 56px;
+  margin-right: 5px;
+  /* color: green; */
 }
 
 body {
@@ -93,8 +93,6 @@ body {
   align-items: center;
   background-color: whitesmoke;
 }
-
-
 
 .message {
   visibility: hidden;
