@@ -949,8 +949,7 @@ divide.addEventListener("click", () => {
   if (arr.length !== 0) {
     display.textContent = "/";
     arr.push("/");
-  } else {
-    arr = [];
+    clickCount = 0;
   }
 });
 
@@ -967,8 +966,7 @@ multiply.addEventListener("click", () => {
   if (arr.length !== 0) {
     display.textContent = "*";
     arr.push("*");
-  } else {
-    arr = [];
+    clickCount = 0;
   }
 });
 
@@ -1002,8 +1000,7 @@ subtract.addEventListener("click", () => {
   if (arr.length !== 0) {
     display.textContent = "-";
     arr.push("-");
-  } else {
-    arr = [];
+    clickCount = 0;
   }
 });
 
