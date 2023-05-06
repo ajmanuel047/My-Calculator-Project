@@ -112,7 +112,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 1;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -147,7 +147,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 2;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -182,7 +182,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 3;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -218,7 +218,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 4;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -254,7 +254,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 5;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -290,7 +290,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 6;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -326,7 +326,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 7;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -362,7 +362,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 8;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -398,7 +398,7 @@ document.addEventListener("keydown", (e) => {
         display.textContent = 9;
         arr = [];
         arr.push(display.textContent);
-        clickCount++;
+        clickCount = 0;
       }
     } else {
       setTimeout(() => {
@@ -511,7 +511,7 @@ zero.addEventListener("click", () => {
       display.textContent = 0;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -546,7 +546,7 @@ one.addEventListener("click", () => {
       display.textContent = 1;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -581,7 +581,7 @@ two.addEventListener("click", () => {
       display.textContent = 2;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -616,7 +616,7 @@ three.addEventListener("click", () => {
       display.textContent = 3;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -651,7 +651,7 @@ four.addEventListener("click", () => {
       display.textContent = 4;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -686,7 +686,7 @@ five.addEventListener("click", () => {
       display.textContent = 5;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -721,7 +721,7 @@ six.addEventListener("click", () => {
       display.textContent = 6;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -756,7 +756,7 @@ seven.addEventListener("click", () => {
       display.textContent = 7;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -791,7 +791,7 @@ eight.addEventListener("click", () => {
       display.textContent = 8;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
     }
   } else {
     setTimeout(() => {
@@ -826,7 +826,8 @@ nine.addEventListener("click", () => {
       display.textContent = 9;
       arr = [];
       arr.push(display.textContent);
-      clickCount++;
+      clickCount = 0;
+      console.log(clickCount);
     }
   } else {
     setTimeout(() => {
@@ -1030,6 +1031,7 @@ equal.addEventListener("click", () => {
       arr = [];
       arr.push(display.textContent);
       clickCount++;
+      console.log(clickCount);
     }
   }
 });
