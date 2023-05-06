@@ -445,12 +445,12 @@ document.addEventListener("keydown", (e) => {
     }
   } else if (e.key === "=" || e.key === "Enter") {
     const result = operator(arr);
-    if (!arr.length === 0) {
+    // eslint-disable-next-line eqeqeq
+    if (!arr.length == 0) {
       if (result.toString().length > 9) {
         display.textContent = result.toFixed(2);
         arr = [];
         arr.push(display.textContent);
-
         clickCount++;
       } else if (
         arr[arr.length - 1] === "+" ||
@@ -468,8 +468,8 @@ document.addEventListener("keydown", (e) => {
         display.textContent = result;
         arr = [];
         arr.push(display.textContent);
-
         clickCount++;
+        console.log(clickCount);
       }
     }
   } else if (e.key === "Escape") {
