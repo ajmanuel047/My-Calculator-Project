@@ -959,13 +959,13 @@ multiply.addEventListener("click", () => {
     display.textContent === "+" ||
     display.textContent === "-" ||
     display.textContent === "/" ||
-    display.textContent === "*"
+    display.textContent === "x"
   ) {
     const index = arr.length - 1;
     arr.splice(index, 1);
   }
   if (arr.length !== 0) {
-    display.textContent = "*";
+    display.textContent = "x";
     arr.push("*");
     clickCount = 0;
   }
