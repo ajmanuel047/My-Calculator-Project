@@ -1,20 +1,6 @@
 /* eslint-disable operator-linebreak */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
-const zero = document.querySelector(".num0");
-const one = document.querySelector(".num1");
-const two = document.querySelector(".num2");
-const three = document.querySelector(".num3");
-const four = document.querySelector(".num4");
-const five = document.querySelector(".num5");
-const six = document.querySelector(".num6");
-const seven = document.querySelector(".num7");
-const eight = document.querySelector(".num8");
-const nine = document.querySelector(".num9");
-const divide = document.querySelector(".divide");
-const subtract = document.querySelector(".subtract");
-const addButton = document.querySelector(".addition");
-const multiply = document.querySelector(".multiply");
 const equal = document.querySelector(".equal");
 const plusMinus = document.querySelector(".plus_minus");
 const clearButton = document.querySelector(".ac");
@@ -33,6 +19,43 @@ let clickCount = 0;
 
 let arr = [];
 
+const value = Array.from(
+  document.querySelectorAll(
+    ".one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .zero"
+  )
+);
+
+const signs = Array.from(
+  document.querySelectorAll(".addition, .subtract, .multiply, .divide")
+);
+
+signs.forEach((signs) => {
+  const value = signs.textContent;
+  console.log(signs.textContent);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === `${value}`) {
+      if (
+        display.textContent === "+" ||
+        display.textContent === "-" ||
+        display.textContent === "/" ||
+        display.textContent === "X"
+      ) {
+        const index = arr.length - 1;
+        arr.splice(index, 1);
+      }
+      document.body.style.backgroundColor = "green";
+      if (arr.length !== 0) {
+        display.textContent = `${value}`;
+        arr.push(display.textContent);
+        clickCount = 0;
+        console.log(arr);
+      } else {
+        arr = [];
+      }
+    }
+  });
+});
+
 function operator() {
   let result = Number(arr[0]);
   // eslint-disable-next-line no-plusplus
@@ -41,7 +64,7 @@ function operator() {
       result += arr[i + 1];
     } else if (arr[i] === "-") {
       result -= arr[i + 1];
-    } else if (arr[i] === "*") {
+    } else if (arr[i] === "X") {
       result *= arr[i + 1];
     } else if (arr[i] === "/") {
       result /= arr[i + 1];
@@ -50,400 +73,56 @@ function operator() {
   return result;
 }
 
-/* Keydown start for number buttons */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "0") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 0;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 0;
-        const result = Number(`${arr[arr.length - 1]}0`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 0;
-        arr.push(0);
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 0;
-        arr = [];
-        arr.push(display.textContent);
-        // eslint-disable-next-line no-plusplus
-        clickCount++;
+value.forEach((value) => {
+  /* Keydown start for number buttons */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === `${value.textContent}`) {
+      if (display.textContent.length < 9) {
+        if (display.textContent === "0." && clickCount === 0) {
+          display.textContent += value.textContent;
+          arr.splice(arr.length - 1, 1);
+          arr.push(Number(display.textContent));
+          console.log(arr);
+          clickCount = 0;
+        } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
+          display.textContent += value.textContent;
+          const result = Number(`${display.textContent}`);
+          arr.pop();
+          arr.push(result);
+          console.log(arr);
+          clickCount = 0;
+        } else if (
+          /[0+-/] || [*]/.test(display.textContent) &&
+          clickCount === 0
+        ) {
+          display.textContent = value.textContent;
+          arr.push(Number(value.textContent));
+          console.log(arr);
+          clickCount = 0;
+        } else if (clickCount !== 0) {
+          display.textContent = value.textContent;
+          arr = [];
+          arr.push(Number(display.textContent));
+          console.log(arr);
+          clickCount = 0;
+        }
+      } else {
+        setTimeout(() => {
+          message.style.visibility = "visible";
+          message2.style.visibility = "hidden";
+        }, 50);
+        setTimeout(() => {
+          message.style.visibility = "hidden";
+        }, 2000);
       }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
     }
-  } else if (e.key === "1") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 1;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 1;
-        const result = Number(`${arr[arr.length - 1]}1`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 1;
-        arr.push(1);
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 1;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "2") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 2;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 2;
-        const result = Number(`${arr[arr.length - 1]}2`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 2;
-        arr.push(2);
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 2;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "3") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 3;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 3;
-        const result = Number(`${arr[arr.length - 1]}3`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 3;
-        arr.push(3);
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 3;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "4") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 4;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 4;
-        const result = Number(`${arr[arr.length - 1]}4`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 4;
-        arr.push(4);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 4;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "5") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 5;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 5;
-        const result = Number(`${arr[arr.length - 1]}5`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 5;
-        arr.push(5);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 5;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "6") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 6;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 6;
-        const result = Number(`${arr[arr.length - 1]}6`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 6;
-        arr.push(6);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 6;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "7") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 7;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 7;
-        const result = Number(`${arr[arr.length - 1]}7`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 7;
-        arr.push(7);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 7;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "8") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 8;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 8;
-        const result = Number(`${arr[arr.length - 1]}8`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 8;
-        arr.push(8);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 8;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  } else if (e.key === "9") {
-    if (display.textContent.length < 9) {
-      if (display.textContent === "0." && clickCount === 0) {
-        display.textContent += 9;
-        arr.splice(arr.length - 1, 1);
-        arr.push(Number(display.textContent));
-        clickCount = 0;
-      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-        display.textContent += 9;
-        const result = Number(`${arr[arr.length - 1]}9`);
-        arr.pop();
-        arr.push(result);
-        clickCount = 0;
-      } else if (
-        /[0+-/] || [*]/.test(display.textContent) &&
-        clickCount === 0
-      ) {
-        display.textContent = 9;
-        arr.push(9);
-
-        clickCount = 0;
-      } else if (clickCount !== 0) {
-        display.textContent = 9;
-        arr = [];
-        arr.push(display.textContent);
-        clickCount = 0;
-      }
-    } else {
-      setTimeout(() => {
-        message.style.visibility = "visible";
-        message2.style.visibility = "hidden";
-      }, 50);
-      setTimeout(() => {
-        message.style.visibility = "hidden";
-      }, 2000);
-    }
-  }
+  });
 });
-
 /* keydown end for number buttons */
 
 /* keydown start for sign buttons */
 document.addEventListener("keydown", (e) => {
-  if (e.key === "+") {
-    if (arr.length !== 0) {
-      display.textContent = "+";
-      arr.push("+");
-      clickCount = 0;
-    }
-  } else if (e.key === "-") {
-    if (arr.length !== 0) {
-      display.textContent = "-";
-      arr.push("-");
-    } else {
-      arr = [];
-    }
-  } else if (e.key === "*") {
-    if (arr.length !== 0) {
-      display.textContent = "*";
-      arr.push("*");
-    } else {
-      arr = [];
-    }
-  } else if (e.key === "/") {
-    if (arr.length !== 0) {
-      display.textContent = "/";
-      arr.push("/");
-    } else {
-      arr = [];
-    }
-  } else if (e.key === "=" || e.key === "Enter") {
+  if (e.key === "=" || e.key === "Enter") {
     const result = operator(arr);
     // eslint-disable-next-line eqeqeq
     if (!arr.length == 0) {
@@ -469,7 +148,7 @@ document.addEventListener("keydown", (e) => {
         arr = [];
         arr.push(display.textContent);
         clickCount++;
-        console.log(clickCount);
+        // console.log(clickCount);
       }
     }
   } else if (e.key === "Escape") {
@@ -480,7 +159,6 @@ document.addEventListener("keydown", (e) => {
     if (arr.length !== 0) {
       const value = arr.indexOf(display.textContent);
       const result = display.textContent / 100;
-
       display.textContent = result;
       arr.splice(value, 1, result);
     } else {
@@ -489,355 +167,81 @@ document.addEventListener("keydown", (e) => {
   }
 });
 /* keydown end for sign buttons */
-zero.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 0;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 0;
-      const result = Number(`${arr[arr.length - 1]}0`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 0;
-      arr.push(0);
 
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 0;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
+value.forEach((value) => {
+  const num = value.className;
+  // console.log(num);
+  document.querySelector(`.${num}`).addEventListener("click", () => {
+    if (display.textContent.length < 9) {
+      if (display.textContent === "0") {
+        arr = [];
+      }
+      if (display.textContent === "0." && clickCount === 0) {
+        display.textContent += value.textContent;
+        arr.splice(arr.length - 1, 1);
+        console.log(display.textContent);
+        arr.push(Number(display.textContent));
+
+        clickCount = 0;
+      } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
+        display.textContent += value.textContent;
+        console.log(display.textContent);
+        const result = Number(`${display.textContent}`);
+        console.log(typeof result);
+        arr.pop();
+        arr.push(result);
+        console.log(display.textContent);
+        console.log(arr);
+        clickCount = 0;
+      } else if (
+        /[0+-/] || [X]/.test(display.textContent) &&
+        clickCount === 0
+      ) {
+        display.textContent = value.textContent;
+        console.log(display.textContent);
+        arr.push(Number(display.textContent));
+        console.log(arr);
+        clickCount = 0;
+      } else if (clickCount !== 0) {
+        display.textContent = value.textContent;
+        arr = [];
+        arr.push(display.textContent);
+        clickCount = 0;
+      }
+    } else {
+      setTimeout(() => {
+        message.style.visibility = "visible";
+        message2.style.visibility = "hidden";
+      }, 50);
+      setTimeout(() => {
+        message.style.visibility = "hidden";
+      }, 2000);
     }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
+  });
 });
 
-one.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 1;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 1;
-      const result = Number(`${arr[arr.length - 1]}1`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 1;
-      arr.push(1);
+// console.log(signs);
 
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 1;
-      arr = [];
+signs.forEach((signs) => {
+  const operators = signs.className;
+  // console.log(operators);
+  document.querySelector(`.${operators}`).addEventListener("click", () => {
+    if (
+      display.textContent === "+" ||
+      display.textContent === "-" ||
+      display.textContent === "/" ||
+      display.textContent === "X"
+    ) {
+      const index = arr.length - 1;
+      arr.splice(index, 1);
+    }
+    if (arr.length !== 0) {
+      display.textContent = signs.textContent;
       arr.push(display.textContent);
+      console.log(arr);
       clickCount = 0;
     }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-two.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 2;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 2;
-      const result = Number(`${arr[arr.length - 1]}2`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 2;
-      arr.push(2);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 2;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-three.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 3;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 3;
-      const result = Number(`${arr[arr.length - 1]}3`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 3;
-      arr.push(3);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 3;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-four.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 4;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 4;
-      const result = Number(`${arr[arr.length - 1]}4`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 4;
-      arr.push(4);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 4;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-five.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 5;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 5;
-      const result = Number(`${arr[arr.length - 1]}5`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 5;
-      arr.push(5);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 5;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-six.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 6;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 6;
-      const result = Number(`${arr[arr.length - 1]}6`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 6;
-      arr.push(6);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 6;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-seven.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 7;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 7;
-      const result = Number(`${arr[arr.length - 1]}7`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 7;
-      arr.push(7);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 7;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-eight.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 8;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 8;
-      const result = Number(`${arr[arr.length - 1]}8`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 8;
-      arr.push(8);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 8;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
-});
-
-nine.addEventListener("click", () => {
-  if (display.textContent.length < 9) {
-    if (display.textContent === "0." && clickCount === 0) {
-      display.textContent += 9;
-      arr.splice(arr.length - 1, 1);
-      arr.push(Number(display.textContent));
-      clickCount = 0;
-    } else if (/[1-9]/.test(display.textContent) && clickCount === 0) {
-      display.textContent += 9;
-      const result = Number(`${arr[arr.length - 1]}9`);
-      arr.pop();
-      arr.push(result);
-      clickCount = 0;
-    } else if (/[0+-/] || [*]/.test(display.textContent) && clickCount === 0) {
-      display.textContent = 9;
-      arr.push(9);
-
-      clickCount = 0;
-    } else if (clickCount !== 0) {
-      display.textContent = 9;
-      arr = [];
-      arr.push(display.textContent);
-      clickCount = 0;
-      console.log(clickCount);
-    }
-  } else {
-    setTimeout(() => {
-      message.style.visibility = "visible";
-      message2.style.visibility = "hidden";
-    }, 50);
-    setTimeout(() => {
-      message.style.visibility = "hidden";
-    }, 2000);
-  }
+  });
 });
 
 decimal.addEventListener("click", () => {
@@ -853,10 +257,10 @@ decimal.addEventListener("click", () => {
 
 percentage.addEventListener("click", () => {
   if (arr.length !== 0) {
-    const value = arr.indexOf(display.textContent);
+    const index = arr.indexOf(display.textContent);
     const result = display.textContent / 100;
     display.textContent = result;
-    arr.splice(value, 1, result);
+    arr.splice(index, 1, result);
   } else {
     arr = [];
   }
@@ -937,74 +341,6 @@ plusMinus.addEventListener("click", () => {
   }
 });
 
-divide.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "/" ||
-    display.textContent === "*"
-  ) {
-    const index = arr.length - 1;
-    arr.splice(index, 1);
-  }
-  if (arr.length !== 0) {
-    display.textContent = "/";
-    arr.push("/");
-    clickCount = 0;
-  }
-});
-
-multiply.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "/" ||
-    display.textContent === "x"
-  ) {
-    const index = arr.length - 1;
-    arr.splice(index, 1);
-  }
-  if (arr.length !== 0) {
-    display.textContent = "x";
-    arr.push("*");
-    clickCount = 0;
-  }
-});
-
-addButton.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "/" ||
-    display.textContent === "*"
-  ) {
-    const index = arr.length - 1;
-    arr.splice(index, 1);
-  }
-  if (arr.length !== 0) {
-    display.textContent = "+";
-    arr.push("+");
-    clickCount = 0;
-  }
-});
-
-subtract.addEventListener("click", () => {
-  if (
-    display.textContent === "+" ||
-    display.textContent === "-" ||
-    display.textContent === "/" ||
-    display.textContent === "*"
-  ) {
-    const index = arr.length - 1;
-    arr.splice(index, 1);
-  }
-  if (arr.length !== 0) {
-    display.textContent = "-";
-    arr.push("-");
-    clickCount = 0;
-  }
-});
-
 equal.addEventListener("click", () => {
   const result = operator(arr);
   // eslint-disable-next-line eqeqeq
@@ -1013,6 +349,7 @@ equal.addEventListener("click", () => {
       display.textContent = result.toFixed(2);
       arr = [];
       arr.push(display.textContent);
+      console.log(arr);
       clickCount++;
     } else if (
       arr[arr.length - 1] === "+" ||
@@ -1030,14 +367,19 @@ equal.addEventListener("click", () => {
       display.textContent = result;
       arr = [];
       arr.push(display.textContent);
+      console.log(arr);
       clickCount++;
-      console.log(clickCount);
     }
   }
 });
 
 clearButton.addEventListener("click", () => {
   display.textContent = 0;
+  console.clear();
   arr = [];
   clickCount = 0;
 });
+
+/*
+you were trying to fix keydown. click * and / not working
+*/
