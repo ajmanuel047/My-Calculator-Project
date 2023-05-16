@@ -63,7 +63,6 @@ h3 {
 
 .buttons_container {
   display: flex;
-  /* background-color: green; */
   margin: auto;
   margin-right: -3px;
   position: relative;
@@ -76,13 +75,9 @@ h3 {
   position: relative;
   top: -5px;
   right: 4px;
-
-  /* background-color: orange; */
-
   margin-bottom: -10px;
   font-size: 56px;
   margin-right: 6px;
-  /* color: green; */
 }
 
 body {
@@ -200,7 +195,6 @@ body {
 .btn.decimal {
   width: 61px;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: green;
 }
 
 .divide,
@@ -222,18 +216,11 @@ body {
 }
 
 @media only screen and (max-width: 375px) {
- body {
-  min-height: 100vh;
- }
- h3 {
-  width: 290px;
- }
+  body {
+    min-height: 100vh;
+    min-width: 100%;
+  }
+  h3 {
+    width: 290px;
+  }
 }
-
-
-/* .line {
-  width: 170px;
-  height: 3px;
-  background-color: green;
-  margin: auto;
-} */

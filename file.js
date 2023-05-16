@@ -38,12 +38,11 @@ signs.forEach((signs) => {
         display.textContent === "+" ||
         display.textContent === "-" ||
         display.textContent === "/" ||
-        display.textContent === "X"
+        display.textContent === "x"
       ) {
         const index = arr.length - 1;
         arr.splice(index, 1);
       }
-      document.body.style.backgroundColor = "green";
       if (arr.length !== 0) {
         display.textContent = `${value}`;
         arr.push(display.textContent);
@@ -64,7 +63,7 @@ function operator() {
       result += arr[i + 1];
     } else if (arr[i] === "-") {
       result -= arr[i + 1];
-    } else if (arr[i] === "X") {
+    } else if (arr[i] === "x") {
       result *= arr[i + 1];
     } else if (arr[i] === "/") {
       result /= arr[i + 1];
@@ -194,7 +193,7 @@ value.forEach((value) => {
         console.log(arr);
         clickCount = 0;
       } else if (
-        /[0+-/] || [X]/.test(display.textContent) &&
+        /[0+-/] || [x]/.test(display.textContent) &&
         clickCount === 0
       ) {
         display.textContent = value.textContent;
@@ -230,7 +229,7 @@ signs.forEach((signs) => {
       display.textContent === "+" ||
       display.textContent === "-" ||
       display.textContent === "/" ||
-      display.textContent === "X"
+      display.textContent === "x"
     ) {
       const index = arr.length - 1;
       arr.splice(index, 1);
@@ -381,5 +380,7 @@ clearButton.addEventListener("click", () => {
 });
 
 /*
-you were trying to fix keydown. click * and / not working
+approximation not working or not in i.e 99999999999 * 99999
+the result is overflowing. Fix it
+work on * and x
 */
